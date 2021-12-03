@@ -33,7 +33,7 @@ exports.config = {
     }) {
         console.log(`Test ${test.title} is ${passed ?'passed':'not passed'}. Number of retries: ${JSON.stringify(retries.attempts)}`);
     },
-    baseUrl: 'http://localhost:8000',
+    baseUrl: 'http://localhost:3000',
     waitforTimeout: 10000,
     connectionRetryTimeout: 120000,
     connectionRetryCount: 3,
