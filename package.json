@@ -1,26 +1,25 @@
 {
-  "type": "module",
   "name": "git3",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "wdio-run": "./node_moduls/.bin/wdio run wdio.conf.js",
     "start": "selenium-standalone start",
-    "selenium": "selenium-standalone",
+		"selenium": "selenium-standalone",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    
     "@wdio/cli": "^7.16.10",
     "@wdio/firefox-profile-service": "^7.16.6",
     "@wdio/local-runner": "^7.16.10",
     "@wdio/mocha-framework": "^7.16.6",
+    "selenium-standalone": "^5.9.1",
     "@wdio/selenium-standalone-service": "^7.16.6",
     "@wdio/spec-reporter": "^7.16.9",
     "chromedriver": "^96.0.0",
-    "selenium-standalone": "^5.9.1",
     "wdio-chromedriver-service": "^7.2.2"
   }
 }
