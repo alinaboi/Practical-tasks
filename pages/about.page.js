@@ -1,32 +1,54 @@
-class AboutPage {
+import BasePage from "../base/base.page.js";
+import Button from "../elements/button.js";
+class AboutPage extends BasePage {
+    constructor() {
+        super();
+    }
+
+    static getBaseElement() {
+        return new BaseElement($('#navbarAccount'), "Account Menu");
+    }
+    get closePopupBtn() {
+        return new Button($('button.close-dialog'), "Close dialog message");
+    }
+    get closeCookieBtn() {
+        return new Button($('.cc-btn'), "Closse cookie message");
+    }
     get accountMenuBtn() {
-        return $('#navbarAccount');
+        return new Button($('#navbarAccount'), "Account Menu");
     }
     get sideNavMenuBtn() {
-        return $('.mat-focus-indicator.mat-tooltip-trigger.mat-button.mat-button-base:first-of-type');
+        return new Button($('.mat-focus-indicator.mat-tooltip-trigger.mat-button.mat-button-base:first-of-type'), "Open Side Navigation Menu");
     }
     get aboutUsBtn() {
-        return $('[routerlink="/about"]');
+        return new Button($('[routerlink="/about"]'), "Move to About Us Page");
     }
     get twitterBtn() {
-        return $('[aria-label="Button for the Twitter page of the shop"]');
+        return new Button($('[aria-label="Button for the Twitter page of the shop"]'), "Open Twitter Page");
     }
     get facebookBtn() {
-        return $('[aria-label="Button for the Facebook page of the shop"]');
-        //return $('.svg-inline--fa.fa-facebook.fa-w-16.fa-lg');
+        return new Button($('[aria-label="Button for the Facebook page of the shop"]'), "Open Facebook Page");
+        //return new Button($('.svg-inline--fa.fa-facebook.fa-w-16.fa-lg'), "Open Facebook Page");
     }
     get slackBtn() {
-        return $('[aria-label="Button for the Slack page of the shop"]');
+        return new Button($('[aria-label="Button for the Slack page of the shop"]'), "Open Slack Page");
     }
     get redditBtn() {
-        return $('[aria-label="Button for the Reddit page of the shop"]');
+        return new Button($('[aria-label="Button for the Reddit page of the shop"]'), "Open Reddit Page");
     }
     get pressKitBtn() {
-        return $('[aria-label="Button for the PressKit page of the shop"]');
+        return new Button($('[aria-label="Button for the PressKit page of the shop"]'), "Open Press Kit Page");
+    }
+    get backToHomePageBtn() {
+        return new Button($('[aria-label="Back to homepage"]'), "Move back to Home Page");
     }
 
     async open() {
-        await browser.url(`http://localhost:3000/#/about`);
+        await super.open(`http://localhost:3000/#/about`);
+        if (await this.closePopupBtn.isExisting())
+            await this.closePopupBtn.click();
+        if (await this.closeCookieBtn.isExisting())
+            await this.closeCookieBtn.click();
     }
     async navigateToTwitter() {
         await this.twitterBtn.click();
@@ -43,6 +65,10 @@ class AboutPage {
     async navigateToPressKit() {
         await this.pressKitBtn.click();
     }
-   
+    async waitForScreenToBeAvailable() {
+        await this.accountMenuBtn.waitForDisplayed();
+        await this.redditBtn.waitForDisplayed();
+    }
+
 }
 export default new AboutPage();

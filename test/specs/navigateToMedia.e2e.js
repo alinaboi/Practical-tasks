@@ -3,23 +3,33 @@ import MainPage from "../../pages/main.page.js"
 
 describe('Navigation testing', async () => {
     it('test switching to social media pages through About page', async () => {
+
         //Main Page
-        await browser.pause(5000);
         await MainPage.open();
+        await MainPage.waitForScreenToBeAvailable();
         await MainPage.openSideNavMenu();
-        await browser.pause(3000);
         await MainPage.navigateToAboutPage();
 
         //About Page
-        await browser.pause(5000);
+        await AboutPage.facebookBtn.wdioElement.waitForClickable({ timeout: 5000 });
         await AboutPage.navigateToFacebook();
-        await browser.pause(4000);
+        await browser.waitUntil(
+            async () => {
+                try {
+                    await browser.switchWindow('facebook.com/owasp.juiceshop');
+                } catch (e) {
+                    return false;
+                }
+                return true;
+            },
+            {
+                timeout: 5000,
+                interval: 1000,
+                timeoutMsg: 'expected Facebook Page is opened'
+            }
+        );
 
-        //Social Media Page
-        await browser.switchWindow('facebook.com/owasp.juiceshop')
-        await browser.pause(5000);
-        //await browser.switchWindow('OWASP Juice Shop - Главная | Facebook');
-
+        
         //Verify the page is opened
         await expect ($('//span[text()="OWASP Juice Shop"]')).toBeDisplayed();
 
