@@ -39,11 +39,13 @@ class LoginPage extends BasePage {
     }
 
     async open() {
+        await allure.startStep(`Navigation to the Login Page`);
         await super.open(`http://localhost:3000/#/login`);
         if (await this.closePopupBtn.isExisting())
             await this.closePopupBtn.click();
         if (await this.closeCookieBtn.isExisting())
             await this.closeCookieBtn.click();
+            await allure.endStep(`passed`);
     }
 
     async waitForScreenToBeAvailable() {
@@ -52,13 +54,16 @@ class LoginPage extends BasePage {
     }
 
     async login(email, password) {
+        await allure.startStep(`Logging in with ${email}/ ${password}`);
         await this.emailInput.setValue(email);
         await this.passwordInput.setValue(password);
         await this.loginBtn.click();
+        await allure.endStep(`passed`);
 
     }
 
     async addNewUser() {
+        await allure.addStep(`Navigation to the Registration Page`);
         await this.moveToRegistrationPageBtn.click();
     }
 

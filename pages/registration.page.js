@@ -51,20 +51,25 @@ class RegistrationPage extends BasePage{
     }
 
     async open() {
+        await allure.startStep(`Navigation to the Registration Page`);
         await super.open(`http://localhost:3000/#/register`);
         if (await this.closePopupBtn.isExisting())
             await this.closePopupBtn.click();
         if (await this.closeCookieBtn.isExisting())
             await this.closeCookieBtn.click();
+            await allure.endStep(`passed`);
     }
 
     async createLogin(email, password) {
+        await allure.startStep(`Registrating with ${email}/ ${password}`);
         await this.newEmailInput.setValue(email);
         await this.newPasswordInput.setValue(password);
         await this.newPasswordInputRepeat.setValue(password);
+        await allure.endStep(`passed`);
     }
 
     async createSecurityAnswer(answer) {
+        await allure.addStep(`Adding the answer to the security question`);
         await this.securityAnswer.setValue(answer);
     }
 
@@ -74,6 +79,7 @@ class RegistrationPage extends BasePage{
     }
 
     async finishRegistration() {
+        await allure.addStep(`Click on the Register Button -> Finishing registration`);
         await this.registerBtn.click();
     }
     

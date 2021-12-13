@@ -44,25 +44,32 @@ class AboutPage extends BasePage {
     }
 
     async open() {
+        await allure.startStep(`Navigation to the About Page`);
         await super.open(`http://localhost:3000/#/about`);
         if (await this.closePopupBtn.isExisting())
             await this.closePopupBtn.click();
         if (await this.closeCookieBtn.isExisting())
             await this.closeCookieBtn.click();
+            await allure.endStep(`passed`);
     }
     async navigateToTwitter() {
+        await allure.addStep(`Navigation to company's Twitter Page`);
         await this.twitterBtn.click();
     }
     async navigateToFacebook() {
+        await allure.addStep(`Navigation to company's Facebook Page`);
         await this.facebookBtn.click();
     }
     async navigateToSlack() {
+        await allure.addStep(`Navigation to company's Slack Page`);
         await this.slackBtn.click();
     }
     async navigateToReddit() {
+        await allure.addStep(`Navigation to company's Reddit Page`);
         await this.redditBtn.click();
     }
     async navigateToPressKit() {
+        await allure.addStep(`Navigation to company's Press Kit Page`);
         await this.pressKitBtn.click();
     }
     async waitForScreenToBeAvailable() {
