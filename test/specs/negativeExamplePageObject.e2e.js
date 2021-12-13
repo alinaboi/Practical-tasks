@@ -3,19 +3,21 @@ import MainPage from "../../pages/main.page.js"
 
 describe('Login testing', async () => {
     it('negative login test using PageObject', async () => {
-        //Main Page
-        await browser.pause(5000);
+
+        //Main Page await MainPage.open();
         await MainPage.open();
+        await MainPage.waitForScreenToBeAvailable();
         await MainPage.openAccountMenu();
         await MainPage.navigateToLogin();
 
         //Login Page
+        await LoginPage.waitForScreenToBeAvailable();
         await LoginPage.login('jvfjkvk@gmail.com', 'cjhedfcbe');
-        await browser.pause(3000);
 
         //Negative -> Login page
         //Verify the message is displayed
-        await expect(LoginPage.unloggedError).toBeDisplayed();
+        await MainPage.waitForScreenToBeAvailable();
+        await expect(LoginPage.notloggedError.wdioElement).toBeDisplayed();
         
         /*try {
             if (await LoginPage.isUnloggedErrorDisplayed === false) {

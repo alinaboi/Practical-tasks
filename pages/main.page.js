@@ -1,30 +1,50 @@
-class MainPage {
+import BasePage from "../base/base.page.js";
+import Button from "../elements/button.js";
+import Dropdown from "../elements/dropdown.js";
+
+
+class MainPage extends BasePage{
+    constructor() {
+        super();
+    }
+    static getBaseElement() {
+        return new BaseElement($('#navbarAccount'), "Account Menu");
+    }
     get accountMenuBtn() {
-        return $('#navbarAccount');
+        return new Button($('#navbarAccount'), "Account Menu");
     }
     get loginBtn() {
-        return $('button[routerlink="/login"]');
+        return new Button($('button[routerlink="/login"]'), "Login");
     }
     get closePopupBtn() {
-        return $('button.close-dialog');
+        return new Button($('button.close-dialog'), "Close dialog message");
     }
     get closeCookieBtn() {
-        return $('.cc-btn');
+        return new Button($('.cc-btn'), "Closse cookie message");
     }
     get logoutBtn() {
-        return $('#navbarLogoutButton');
+        return new Button($('#navbarLogoutButton'), "Logout");
     }
     get sideNavMenuBtn() {
-        return $('.mat-focus-indicator.mat-tooltip-trigger.mat-button.mat-button-base:first-of-type');
+        return new Button($('.mat-focus-indicator.mat-tooltip-trigger.mat-button.mat-button-base:first-of-type'), "Open Side Navigation Menu");
     }
     get aboutUsBtn() {
-        return $('[routerlink="/about"]');
+        return new Button($('[routerlink="/about"]'), "Move to About Us Page");
     }
+    get backToHomePageBtn() {
+        return new Button($('[aria-label="Back to homepage"]'), "Move back to Home Page");
+    }
+    get loggedInAccountMenu() {
+        return new Dropdown($('.mat-menu-content.ng-tns-c256-2'), "User's Account Menu")
+    }
+    
 
     async open() {
-        await browser.url(`http://localhost:3000/#/`);
-        await this.closePopupBtn.click();
-        await this.closeCookieBtn.click();
+        await super.open(`http://localhost:3000/#`);
+        if (await this.closePopupBtn.isExisting())
+            await this.closePopupBtn.click();
+        if (await this.closeCookieBtn.isExisting())
+            await this.closeCookieBtn.click();
     }
     async openAccountMenu() {
         await this.accountMenuBtn.click();
@@ -40,6 +60,16 @@ class MainPage {
     }
     async isLogoutBtnDisplayed() {
         await this.logoutBtn.isDisplayed();
+    }
+    async isLoggedInAccountMenuDisplayed() {
+        await this.loggedInAccountMenu.isDisplayed();
+    }
+    async waitForAccountMenuDropdownDisplated() {
+        await this.loggedInAccountMenu.waitForDisplayed();
+    }
+    async waitForScreenToBeAvailable() {
+        await this.accountMenuBtn.waitForDisplayed();
+        await this.sideNavMenuBtn.waitForDisplayed();
     }
 }
 export default new MainPage();
