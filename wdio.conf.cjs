@@ -1,3 +1,7 @@
+//import allureReporter from '@wdio/allure-reporter';
+
+const allureReporter = require("@wdio/allure-reporter").default;
+
 const {
     json
 } = require("stream/consumers");
@@ -19,18 +23,26 @@ exports.config = {
     logLevel: 'info',
     bail: 0,
     before() {
+        //global.allure = allureReporter;
         console.log(`The test is processed. Test to be executed: ` + JSON.stringify(this.specs));
+    },
+    beforeSession() {
+        global.allure = allureReporter;
     },
     beforeTest: function (test, context) {
         console.log(`Running test: ${test.title}`);
     },
-    afterTest: function (test, context, {
+    afterTest: async function (test, context, {
         error,
         result,
         duration,
         passed,
         retries
     }) {
+        if (!passed) {
+            let screen = await browser.takeScreenshot();
+            await AllureReporter.addAttachment("MyScreenShot", Buffer.from(screen, "base64"), "image/png");
+        }
         console.log(`Test ${test.title} is ${passed ?'passed':'not passed'}. Number of retries: ${JSON.stringify(retries.attempts)}`);
     },
     baseUrl: 'http://localhost:3000',
@@ -39,7 +51,11 @@ exports.config = {
     connectionRetryCount: 3,
     services: ['selenium-standalone'],
     framework: 'mocha',
-    reporters: ['spec'],
+    reporters: ['spec', ['allure', {
+        outputDir: 'allure-results',
+        disableWebdriverStepsReporting: true,
+        disableWebdriverScreenshotsReporting: false,
+    }]],
     mochaOpts: {
         ui: 'bdd',
         timeout: 60000

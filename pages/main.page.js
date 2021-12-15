@@ -40,22 +40,28 @@ class MainPage extends BasePage{
     
 
     async open() {
+        await allure.startStep(`Navigation to the Main Page`);
         await super.open(`http://localhost:3000/#`);
         if (await this.closePopupBtn.isExisting())
             await this.closePopupBtn.click();
         if (await this.closeCookieBtn.isExisting())
             await this.closeCookieBtn.click();
+            await allure.endStep(`passed`);
     }
     async openAccountMenu() {
+        await allure.addStep(`Click on Account Menu Button`);
         await this.accountMenuBtn.click();
     }
     async openSideNavMenu() {
+        await allure.addStep(`Click on the Side Navigation Menu Button`);
         await this.sideNavMenuBtn.click();
     }
     async navigateToLogin() {
+        await allure.addStep(`Navigation to the Login Page`);
         await this.loginBtn.click();
     }
     async navigateToAboutPage() {
+        await allure.addStep(`Navigation to the About Page`);
         await this.aboutUsBtn.click();
     }
     async isLogoutBtnDisplayed() {

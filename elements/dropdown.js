@@ -7,6 +7,6 @@ export default class Dropdown extends BaseElement {
     }
     async select(option) {
         await this.open();
-        await new Button($(`//*[@class="mat-option-text"][contains(text(),"${option}")]`), `Question "${option}"`).click();
+        await new Button($(`//*[@class="mat-option-text"][contains(text(),"${option}")]`), `Select option: "${option}"`).click();
     }
 }
