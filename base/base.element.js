@@ -13,6 +13,6 @@ export default class BaseElement {
         return await this.wdioElement.isExisting();
     }
     async waitForDisplayed() {
-        await this.wdioElement.waitForDisplayed({ timeout: 3000 });
+        await this.wdioElement.waitForDisplayed({ timeout: 10000 });
     }
 }
