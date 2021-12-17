@@ -22,6 +22,9 @@ class MainPage extends BasePage{
     get closeCookieBtn() {
         return new Button($('.cc-btn'), "Closse cookie message");
     }
+    get userProfileBtn() {
+        return new Button($('//button[@aria-label="Go to user profile"]'), "Navigate to Profile Page");
+    }
     get logoutBtn() {
         return new Button($('#navbarLogoutButton'), "Logout");
     }
@@ -30,6 +33,9 @@ class MainPage extends BasePage{
     }
     get aboutUsBtn() {
         return new Button($('[routerlink="/about"]'), "Move to About Us Page");
+    }
+    get customerFeedbackBtn() {
+        return new Button($('//span[contains(text(),"Customer Feedback")]'), "Move to Contact");
     }
     get backToHomePageBtn() {
         return new Button($('[aria-label="Back to homepage"]'), "Move back to Home Page");
@@ -64,6 +70,14 @@ class MainPage extends BasePage{
         await allure.addStep(`Navigation to the About Page`);
         await this.aboutUsBtn.click();
     }
+    async navigateToContactPage() {
+        await allure.addStep(`Navigation to the Contact Page`);
+        await this.customerFeedbackBtn.click();
+    }
+    async navigateToProfile() {
+        await allure.addStep(`Navigation to Profile Page`);
+        await this.userProfileBtn.click();
+    }
     async isLogoutBtnDisplayed() {
         await this.logoutBtn.isDisplayed();
     }
@@ -77,5 +91,5 @@ class MainPage extends BasePage{
         await this.accountMenuBtn.waitForDisplayed();
         await this.sideNavMenuBtn.waitForDisplayed();
     }
-}
-export default new MainPage();
+    
+}export default new MainPage();

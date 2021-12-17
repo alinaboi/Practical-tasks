@@ -46,7 +46,6 @@ class RegistrationPage extends BasePage{
     }
 
     async selectQuestion(text) {
-        //await this.openListBtn.click();
         await this.questionDropdown.select(text);
     }
 

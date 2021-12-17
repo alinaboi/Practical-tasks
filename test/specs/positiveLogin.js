@@ -7,7 +7,7 @@ import chai from "chai";
 describe('Login testing', async () => {
     it('positive login test using PageObject', async () => {
         //Precondition ->Registration via API
-        let registrationApi = new RegistrationViaApi("Testuser1234@gmail.com", "Testpass1");
+        let registrationApi = new RegistrationViaApi("Testuser@gmail.com", "Testpass1");
         const response = await registrationApi.register();
         chai.expect(response.status).to.equal(201);
 
@@ -21,7 +21,7 @@ describe('Login testing', async () => {
 
         //Login Page
         await LoginPage.waitForScreenToBeAvailable();
-        await LoginPage.login("Testuser1234@gmail.com", "Testpass1");
+        await LoginPage.login("Testuser@gmail.com", "Testpass1");
 
         //Positive -> After login page
         await MainPage.waitForScreenToBeAvailable();
