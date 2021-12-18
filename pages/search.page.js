@@ -68,7 +68,7 @@ class SearchPage extends BasePage {
         return new Label($('.mat-paginator.mat-elevation-z6'), "The footer ");
     }
     get soldOutLabel() {
-        return new Label($('.ribbon.ribbon-top-left.ribbon-sold.ng-star-inserted'), "Sold Out Mark ");
+        return new Label($$('.ribbon.ribbon-top-left.ribbon-sold.ng-star-inserted'), "Sold Out Mark ");
     }
     get onlyThreeLeftLabel() {
         return new Label($('(//span[contains(text(), "Only 3 left")])'), "Only 3 Left Mark ");
@@ -92,6 +92,8 @@ class SearchPage extends BasePage {
     async waitForScreenToBeAvailable() {
         await this.accountMenuBtn.waitForDisplayed();
         await this.sideNavMenuBtn.waitForDisplayed();
+        await this.footer.waitForDisplayed();
+        await this.addMelonBikeBtn.waitForDisplayed();
     }
     async addAppleJuice() {
         await allure.addStep(`Click on Add to Basket Button`);
@@ -131,14 +133,17 @@ class SearchPage extends BasePage {
     }
     async addSalesmanArtwork() {
         await allure.addStep(`Click on Add to Basket Button`);
+        await this.addSalesmanArtworkBtn.wdioElement.waitForClickable({timeout: 5000});
         await this.addSalesmanArtworkBtn.click();
     }
     async addPermafrost2020Edition() {
         await allure.addStep(`Click on Add to Basket Button`);
+        await this.addPermafrost2020EditionBtn.wdioElement.waitForClickable({timeout: 5000});
         await this.addPermafrost2020EditionBtn.click();
     }
     async addMelonBike() {
         await allure.addStep(`Click on Add to Basket Button`);
+        await this.addMelonBikeBtn.wdioElement.waitForClickable({timeout: 5000});
         await this.addMelonBikeBtn.click();
     }
     async changeIthemsQuantity(text) {
@@ -152,14 +157,6 @@ class SearchPage extends BasePage {
         await allure.addStep(`Click on the Basket Button`);
         await this.basketBtn.click();
     }
-    // async verifySoldOut() {
-    //     await allure.addStep(``);
-    //     let soldOutText = client.$$('span[contains(text(), "Sold out")')
-    //     soldOutText.then(function (res) {
-    //         console.log(res.length);
-    //         console.log(res);
-    //     })
-    // }
-    
+}
 
-}export default new SearchPage();
+export default new SearchPage();
