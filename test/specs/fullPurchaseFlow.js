@@ -8,32 +8,33 @@ import DeliveryMethodPage from "../../pages/delivery-method.page.js"
 import PaymentShopPage from "../../pages/payment-shop.page.js"
 import OrderSummaryPage from "../../pages/order-summary.page.js"
 import OrderCompletionPage from "../../pages/order-completion.page.js"
+import RegistrationViaApi from "../../api/registration.api.js";
 
 describe('Full purchase flow testing ', async () => {
     it('adding and removing items to the basket, completing purchase flow', async () => {
-        
+        //Precondition -> Registration via API
+        const user = await RegistrationViaApi.registerAndReturnUser();
+
         await MainPage.open();
         await MainPage.waitForScreenToBeAvailable();
         await MainPage.openAccountMenu();
-        await MainPage.loginBtn.wdioElement.waitForClickable({ timeout: 5000 });
+        await MainPage.loginBtn.wdioElement.waitForClickable({timeout: 5000});
         await MainPage.navigateToLogin();
         await LoginPage.waitForScreenToBeAvailable();
-        await LoginPage.login('Funtic@gmail.com', 'Useruser1');
+        await LoginPage.login(user.email, user.password);
 
         //Search Page ->adding items
         await SearchPage.open();
         await SearchPage.waitForScreenToBeAvailable();
-        //await SearchPage.footer.wdioElement.scrollIntoView();
-        //await SearchPage.ithemsPerPageDropdown.wdioElement.waitForClickable({ timeout: 5000 });
-        
+
         await SearchPage.changeIthemsQuantity("36");
         await SearchPage.addAppleJuice();
         await SearchPage.addApplePomace();
         await SearchPage.addBananaJuice();
-        await SearchPage.addCarrotJuiceBtn.wdioElement.waitForClickable({ timeout: 5000 });
+        await SearchPage.addCarrotJuiceBtn.wdioElement.waitForClickable({timeout: 5000});
         await SearchPage.addCarrotJuice();
         await SearchPage.addEggfruitJuice();
-        await SearchPage.addGreenSmoothieBtn.wdioElement.waitForClickable({ timeout: 5000 });
+        await SearchPage.addGreenSmoothieBtn.wdioElement.waitForClickable({timeout: 5000});
         await SearchPage.addGreenSmoothie();
         await SearchPage.addLemonJuice();
         await SearchPage.addOrangeJuice();
@@ -42,7 +43,7 @@ describe('Full purchase flow testing ', async () => {
 
         //Basket Page ->removing items, changing the quantity ->verify if the order correct
         await BasketPage.waitForScreenToBeAvailable();
-        await BasketPage.removeStrawberryJuiceBtn.wdioElement.waitForClickable({ timeout: 5000 });
+        await BasketPage.removeStrawberryJuiceBtn.wdioElement.waitForClickable({timeout: 5000});
         await BasketPage.removeStrawberryJuice();
         await BasketPage.removeApplePomace();
         await BasketPage.removeBananaJuice();
@@ -54,7 +55,7 @@ describe('Full purchase flow testing ', async () => {
         await expect(BasketPage.orangeJuiceText.wdioElement).toBeDisplayed();
         await BasketPage.checkout();
 
-        //Adress Select Page ->adding an adress and selecting it
+        //Address Select Page ->adding an address and selecting it
         await AddressSelectPage.waitForScreenToBeAvailable();
         await AddressSelectPage.addNewAddress();
         await AddressCreatePage.waitForScreenToBeAvailable();
@@ -91,6 +92,6 @@ describe('Full purchase flow testing ', async () => {
         //Order Completion Page ->verify if the order is complete
         await OrderCompletionPage.waitForScreenToBeAvailable();
         await expect(OrderCompletionPage.thankYouMsg.wdioElement).toBeDisplayed();
-        
+
     });
 });
