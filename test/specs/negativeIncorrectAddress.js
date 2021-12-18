@@ -4,14 +4,11 @@ import AddressCreatePage from "../../pages/address-create.page.js"
 import AddressSavedPage from "../../pages/address-saved.page.js"
 import addressCreatePage from "../../pages/address-create.page.js";
 import RegistrationViaApi from "../../api/registration.api.js";
-import chai from "chai";
 
 describe('Negative Address creation testing ', async () => {
     it('adding new address with wrong input', async () => {
         //Precondition ->Registration via API
-        let registrationApi = new RegistrationViaApi("TestuserCc12@gmail.com", "Testuser11");
-        const response = await registrationApi.register();
-        chai.expect(response.status).to.equal(201);
+        const user = await RegistrationViaApi.registerAndReturnUser();
 
         await MainPage.open();
         await MainPage.waitForScreenToBeAvailable();
@@ -21,7 +18,7 @@ describe('Negative Address creation testing ', async () => {
         });
         await MainPage.navigateToLogin();
         await LoginPage.waitForScreenToBeAvailable();
-        await LoginPage.login("TestuserCc12@gmail.com", "Testuser11");
+        await LoginPage.login(user.email, user.password);
 
         //Search Page ->Address Saved Page
         await MainPage.openAccountMenu();
@@ -36,10 +33,8 @@ describe('Negative Address creation testing ', async () => {
         await AddressCreatePage.submitBtn.click();
         await AddressCreatePage.fillAddressFields("@#$1.", "@#$1.", "06333330", "@#$1.", "@#$1.", "@#$1.", "@#$1.");
 
-        //verify if Error massege displayed
-        // await expect(addressCreatePage.invalidMobileNumberMsg.wdioElement).toBeDisplayed();
+        //verify if Error massage displayed
         await browser.waitUntil(
-            // async () => 'true' == addressCreatePage.submitBtn.getAttribute('disabled'), {
             async () => !addressCreatePage.submitBtn.wdioElement.isEnabled(), {
                 timeout: 3000
             });
