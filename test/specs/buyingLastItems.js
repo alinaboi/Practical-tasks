@@ -9,6 +9,7 @@ import PaymentShopPage from "../../pages/payment-shop.page.js"
 import OrderSummaryPage from "../../pages/order-summary.page.js"
 import OrderCompletionPage from "../../pages/order-completion.page.js"
 import RegistrationViaApi from "../../api/registration.api.js";
+import chai from "chai";
 
 describe('Buying the last item flow testing ', async () => {
     it('adding and removing items to the basket, completing purchase flow', async () => {
@@ -27,10 +28,8 @@ describe('Buying the last item flow testing ', async () => {
         await SearchPage.open();
         await SearchPage.waitForScreenToBeAvailable();
 
-        await SearchPage.addSalesmanArtworkBtn.wdioElement.waitForClickable({timeout: 5000});
         await SearchPage.addSalesmanArtwork();
         await SearchPage.addPermafrost2020Edition();
-        await SearchPage.addMelonBikeBtn.wdioElement.waitForClickable({timeout: 5000});
         await SearchPage.addMelonBike();
         await SearchPage.openBasket();
 
@@ -39,14 +38,15 @@ describe('Buying the last item flow testing ', async () => {
         await expect(BasketPage.salesmanArtworkText.wdioElement).toBeDisplayed();
         await expect(BasketPage.permafrost2020EditionText.wdioElement).toBeDisplayed();
         await expect(BasketPage.melonBikeText.wdioElement).toBeDisplayed();
-        await BasketPage.checkoutBtn.wdioElement.waitForClickable({timeout: 5000});
+        await BasketPage.checkoutBtn.wdioElement.waitForClickable({timeout: 10000});
         await BasketPage.checkout();
 
-        //Adress Select Page -> adding an adress and selecting it
+        //Address Select Page -> adding an address and selecting it
         await AddressSelectPage.waitForScreenToBeAvailable();
         await AddressSelectPage.addNewAddress();
         await AddressCreatePage.waitForScreenToBeAvailable();
         await AddressCreatePage.fillAddressFields("Ukraine", "Test User", "0633330000", "79000", "Rynok Square, 1", "Lviv", "Lvivs'ka");
+        await AddressCreatePage.submit();
         await AddressSelectPage.waitForScreenToBeAvailable();
         await AddressSelectPage.selectTheAddress();
         await AddressSelectPage.continue();
@@ -81,10 +81,7 @@ describe('Buying the last item flow testing ', async () => {
         //Search Page -> verify if the items marked as sold
         await SearchPage.open();
         await SearchPage.waitForScreenToBeAvailable();
-        await SearchPage.soldOutLabel.waitForDisplayed();
-        const countSoldOut = await SearchPage.soldOutLabel.wdioElement;
-        console.log(JSON.stringify(countSoldOut) + "!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        //console.log(countSoldOut.length +"!!!!!!!!!!!!!!!!!!!!!!!!!!");
-
+        const countSoldOut = await SearchPage.soldOutLabel.wdioElement.length;
+        chai.expect(countSoldOut).to.equal(3);
     });
 });
