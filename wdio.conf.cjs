@@ -41,7 +41,7 @@ exports.config = {
     }) {
         if (!passed) {
             let screen = await browser.takeScreenshot();
-            await AllureReporter.addAttachment("MyScreenShot", Buffer.from(screen, "base64"), "image/png");
+            await allureReporter.addAttachment("MyScreenShot", Buffer.from(screen, "base64"), "image/png");
         }
         console.log(`Test ${test.title} is ${passed ?'passed':'not passed'}. Number of retries: ${JSON.stringify(retries.attempts)}`);
     },
@@ -58,7 +58,7 @@ exports.config = {
     }]],
     mochaOpts: {
         ui: 'bdd',
-        timeout: 60000
+        timeout: 120000
     },
 
 }

@@ -9,4 +9,8 @@ export default class Dropdown extends BaseElement {
         await this.open();
         await new Button($(`//*[@class="mat-option-text"][contains(text(),"${option}")]`), `Select option: "${option}"`).click();
     }
+    async selectNumber(option) {
+        await this.open();
+        await new Button($(`//*[@class="ng-star-inserted"][contains(text(),"${option}")]`), `Select option: "${option}"`).click();
+    }
 }
