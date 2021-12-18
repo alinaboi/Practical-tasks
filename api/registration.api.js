@@ -1,16 +1,28 @@
 import baseApi from "../base/base.api.js";
+import User from "./user.js";
 
-export default  class RegistrationViaApi {
-    constructor(email, password) {
-        this.email= email;
-        this.password= password;
+const password = 'password';
+
+class RegistrationViaApi {
+    constructor() {
     }
-  
-    async register() {
+
+    async registerAndReturnUser() {
+        for (let i = 0; i < 10; i++) {
+            const email = await this.generateEmail(10);
+            const response = await this.register(email, password);
+            if (response.status === 201) {
+                return new User(response.body.data.email, password);
+            }
+        }
+        throw new Error('Cannot register a user.')
+    }
+
+    async register(email, password) {
         return await baseApi.post("/Users", {
-            "email": this.email,
-            "password": this.password,
-            "passwordRepeat": this.password,
+            "email": email,
+            "password": password,
+            "passwordRepeat": password,
             "securityQuestion": {
                 "id": 1,
                 "question": "Your eldest siblings middle name?",
@@ -20,6 +32,16 @@ export default  class RegistrationViaApi {
             "securityAnswer": "Funtic"
         });
     }
-  
-  }
-  
+
+    async generateEmail(length) {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let result = 'user-';
+        const charactersLength = characters.length;
+        for (let i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result + '@gmail.com';
+    }
+}
+
+export default new RegistrationViaApi();
