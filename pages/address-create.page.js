@@ -1,10 +1,9 @@
 import BasePage from "../base/base.page.js";
 import Button from "../elements/button.js";
-import Dropdown from "../elements/dropdown.js";
 import Label from "../elements/label.js";
 import Input from "../elements/input.js";
 
-class AdressSelectPage extends BasePage {
+class AddressCreatePage extends BasePage {
     constructor() {
         super();
     }
@@ -24,14 +23,8 @@ class AdressSelectPage extends BasePage {
     get sideNavMenuBtn() {
         return new Button($('.mat-focus-indicator.mat-tooltip-trigger.mat-button.mat-button-base:first-of-type'), "Open Side Navigation Menu");
     }
-    get footer() {
-        return new Label($('.mat-paginator.mat-elevation-z6'), "The footer ")
-    }
     get basketBtn() {
         return new Button($('[aria-label="Show the shopping cart"]'), "Navigate to Basket")
-    }
-    get addNewAddressBtn() {
-        return new Button($('(//button[@aria-label="Add a new address"])'), "Add New Address")
     }
     get contryInput() {
         return new Input($('(//input[@data-placeholder="Please provide a country."])'), "Contry Input")
@@ -54,23 +47,30 @@ class AdressSelectPage extends BasePage {
     get stateInput() {
         return new Input($('(//input[@data-placeholder="Please provide a state."])'), "State Input")
     }
+    get invalidMobileNumberMsg() {
+        return new Label($('//mat-error[contains(text(),"Mobile number must match 1000000-9999999999 format.")]'), " Mobile number input is not valid Massege.");
+    }
+    get emptyMobileNumberMsg() {
+        return new Label($('//mat-error[contains(text(),"Please provide a mobile number.")]'), " Mobile number input is empty Massege.");
+    }
+    get emptyContryMsg() {
+        return new Label($('//mat-error[contains(text(),"Please provide a country.")]'), " Contry input is empty Massege.");
+    }
+    get emptyNameMsg() {
+        return new Label($('//mat-error[contains(text(),"Please provide a name.")]'), " Name is empty Massege.");
+    }
+    get emptyZipMsg() {
+        return new Label($('//mat-error[contains(text(),"Please provide a ZIP code.")]'), " Zip Code is empty Massege.");
+    }
+    get emptyAddressMsg() {
+        return new Label($('//mat-error[contains(text(),"Please provide an address.")]'), " Address input is empty Massege.");
+    }
+    get emptyCityMsg() {
+        return new Label($('//mat-error[contains(text(),"Please provide a city.")]'), " City input is empty Massege.");
+    }
     get submitBtn() {
-        return new Button($('(//span[contains(text(), "Submit")])'), "Submit Button")
+        return new Button($('(//span[contains(text(), "Submit")])'), "Submit Button");
     }
-    get selectTheAddressBtn() {
-        return new Button($('(//mat-cell[contains(text(),"Test User")])'), "Select User's Address")
-    }
-    /*get selectTheAddressBtn() {
-        return new Button($('(//span[@class="mat-radio-container"])'), "Select User's Address")
-    }
-    get selectTheAddressBtn() {
-        return new Button($('//input[@class="mat-radio-input cdk-visually-hidden"]'), "Select User's Address")
-    }*/
-    get continueBtn() {
-        return new Button ($('(//button[@aria-label="Proceed to payment selection"])'), "Navigate to payment selection")
-    }
-
-
 
     async open() {
         await allure.startStep(`Navigation to the Search Page`);
@@ -85,10 +85,6 @@ class AdressSelectPage extends BasePage {
         await this.accountMenuBtn.waitForDisplayed();
         await this.sideNavMenuBtn.waitForDisplayed();
     }
-    async addNewAddress() {
-        await allure.addStep(`Click on Add New Address Button`);
-        await this.addNewAddressBtn.click();
-    }
     async fillAddressFields(contry, personName, mobileNumber, zipCode, address, city, state) {
         await allure.startStep(`Adding New Address : ${contry}/ ${personName}/ ${mobileNumber}/ ${zipCode}/ ${address}/ ${city}/ ${state}`);
         await this.contryInput.setValue(contry);
@@ -98,23 +94,12 @@ class AdressSelectPage extends BasePage {
         await this.addressInput.setValue(address);
         await this.cityInput.setValue(city);
         await this.stateInput.setValue(state);
-        await this.submitBtn.wdioElement.waitForClickable({
-            timeout: 5000
-        });
-        await this.submitBtn.click();
         await allure.endStep(`passed`);
 
     }
-    async selectTheAddress() {
-        await allure.addStep(`Click on User's Address`);
-        await this.selectTheAddressBtn.click();
+    async submit() {
+        await allure.addStep('Click on Submit Button');
+        await this.submitBtn.click();
     }
-    async continue() {
-        await allure.addStep(`Click on Continue Button`);
-        await this.continueBtn.click();
-    }
-
-
-
 }
-export default new AdressSelectPage();
+export default new AddressCreatePage();

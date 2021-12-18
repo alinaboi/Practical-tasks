@@ -41,8 +41,18 @@ class MainPage extends BasePage{
         return new Button($('[aria-label="Back to homepage"]'), "Move back to Home Page");
     }
     get loggedInAccountMenu() {
-        return new Dropdown($('.mat-menu-content.ng-tns-c256-2'), "User's Account Menu")
+        return new Button($('.mat-menu-content.ng-tns-c256-2'), "User's Account Menu");
     }
+    get ordersAndPaymentBtn() {
+        return new Button($('//button[@aria-label="Show Orders and Payment Menu"]'), "User's Orders Submenu");
+    }
+    get mySavedAddressesBtn() {
+        return new Button($('//span[contains(text(),"My saved addresses")]'), "User's Addresses Menu");
+    }
+    get myPaymentOptionsBtn() {
+        return new Button($('//span[contains(text(),"My Payment Options")]'), "User's Payments Menu");
+    }
+    
     
 
     async open() {
@@ -65,6 +75,18 @@ class MainPage extends BasePage{
     async navigateToLogin() {
         await allure.addStep(`Navigation to the Login Page`);
         await this.loginBtn.click();
+    }
+    async ordersAndPayment() {
+        await allure.addStep(`Navigation to Orders and Payment sub-menu`);
+        await this.ordersAndPaymentBtn.click();
+    }
+    async navigateToPayment() {
+        await allure.addStep(`Navigation to Saved-Payment-Methods Page`);
+        await this.myPaymentOptionsBtn.click();
+    }
+    async navigateToAddress() {
+        await allure.addStep(`Navigation to Address-Saved Page`);
+        await this.mySavedAddressesBtn.click();
     }
     async navigateToAboutPage() {
         await allure.addStep(`Navigation to the About Page`);

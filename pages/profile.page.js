@@ -1,6 +1,7 @@
 import BasePage from "../base/base.page.js";
 import Button from "../elements/button.js";
 import Input from "../elements/input.js";
+import Label from "../elements/label.js";
 
 
 class ProfilePage extends BasePage{
@@ -26,6 +27,18 @@ class ProfilePage extends BasePage{
     get uploadPicBtn() {
         return new Button($('//button[@aria-label="Button to upload the profile picture"]'), "Save changes");
     }
+    get pictureElement() {
+        return $('.img-rounded');
+    }
+    get userNameInput() {
+        return new Input($('//input[@id="username"]'), "User Name Input");
+    }
+    get setUsernameBtn() {
+        return new Button($('//button[@aria-label="Button to save/set the username"]'), "Save User Name Changes");
+    }
+    // get userNameDisplayed(text) {
+    //     return new Label($(`//p[contains(text(),"${text}")]`), "User Name Signature");
+    // }
 
     async open() {
         await allure.startStep(`Navigation to the Profile Page`);
@@ -44,6 +57,13 @@ class ProfilePage extends BasePage{
         await allure.startStep(`Uploading the picture`);
         await browser.chooseFile($('//input[@id="picture"]'), path);
         await this.uploadPicBtn(click);
+        await allure.endStep(`passed`);
+    }
+    async setUserName(text) {
+        await allure.startStep(`Adding User Name`);
+        await this.userNameInput.setValue(text);
+        await this.setUsernameBtn.click();
+        await new Label($(`//p[contains(text(),"${text}")]`), "User Name Signature").waitForDisplayed();
         await allure.endStep(`passed`);
     }
 

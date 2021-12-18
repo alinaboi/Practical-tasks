@@ -2,6 +2,7 @@ import BasePage from "../base/base.page.js";
 import Button from "../elements/button.js";
 import Dropdown from "../elements/dropdown.js";
 import Input from "../elements/input.js";
+import Label from "../elements/label.js";
 
 class RegistrationPage extends BasePage{
     constructor() {
@@ -43,6 +44,15 @@ class RegistrationPage extends BasePage{
     }
     get registerBtn() {
         return new Button($('#registerButton'), "Register New User");
+    }
+    get repeatPasswordMsg() {
+        return new Label($('//mat-error[contains(text(),"Please repeat your password.")]'), " Please repeat your password Massege.");
+    }
+    get providePasswordMsg() {
+        return new Label($('//mat-error[contains(text(),"Please provide a password.")]'), " Please provide a password Massege.");
+    }
+    get invalidEmailMsg() {
+        return new Label($('//mat-error[contains(text(),"Email address is not valid.")]'), " Email address is not valid Massege.");
     }
 
     async selectQuestion(text) {

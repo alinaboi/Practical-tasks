@@ -4,7 +4,7 @@ import Dropdown from "../elements/dropdown.js";
 import Label from "../elements/label.js";
 import Input from "../elements/input.js";
 
-class PaymentShopPage extends BasePage {
+class SavedPaymentMethodsPage extends BasePage {
     constructor() {
         super();
     }
@@ -23,9 +23,6 @@ class PaymentShopPage extends BasePage {
     }
     get sideNavMenuBtn() {
         return new Button($('.mat-focus-indicator.mat-tooltip-trigger.mat-button.mat-button-base:first-of-type'), "Open Side Navigation Menu");
-    }
-    get footer() {
-        return new Label($('.mat-paginator.mat-elevation-z6'), "The footer ")
     }
     get basketBtn() {
         return new Button($('[aria-label="Show the shopping cart"]'), "Navigate to Basket")
@@ -50,12 +47,6 @@ class PaymentShopPage extends BasePage {
     }
     get submitBtn() {
         return new Button($('(//span[contains(text(), "Submit")])'), "Submit Button")
-    }
-    get selectTheCardBtn() {
-        return new Button($('(//span[@class="mat-radio-outer-circle"])'), "Select User's Card")
-    }
-    get continueBtn() {
-        return new Button ($('(//button[@aria-label="Proceed to review"])'), "Navigate to Order Summary")
     }
 
     async open() {
@@ -91,17 +82,6 @@ class PaymentShopPage extends BasePage {
         await allure.endStep(`passed`);
 
     }
-    async selectTheCard() {
-        await allure.addStep(`Click on User's Card`);
-        await this.selectTheCardBtn.click();
-    }
-    async continue() {
-        await allure.addStep(`Click on Continue Button`);
-        await this.continueBtn.wdioElement.waitForClickable({
-            timeout: 5000
-        });
-        await this.continueBtn.click();
-    }
-
+    
 }
-export default new PaymentShopPage();
+export default new SavedPaymentMethodsPage();

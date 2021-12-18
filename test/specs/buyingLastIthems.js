@@ -2,7 +2,8 @@ import LoginPage from "../../pages/login.page.js"
 import MainPage from "../../pages/main.page.js"
 import SearchPage from "../../pages/search.page.js"
 import BasketPage from "../../pages/basket.page.js"
-import AdressSelectPage from "../../pages/adress-select.page.js"
+import AddressSelectPage from "../../pages/adress-select.page.js"
+import AddressCreatePage from "../../pages/address-create.page.js"
 import DeliveryMethodPage from "../../pages/delivery-method.page.js"
 import PaymentShopPage from "../../pages/payment-shop.page.js"
 import OrderSummaryPage from "../../pages/order-summary.page.js"
@@ -47,13 +48,13 @@ describe('Full purchase flow testing ', async () => {
         await BasketPage.checkout();
 
         //Adress Select Page ->adding an adress and selecting it
-        await AdressSelectPage.waitForScreenToBeAvailable();
-        await AdressSelectPage.addNewAddress();
-        await AdressSelectPage.waitForScreenToBeAvailable();
-        await AdressSelectPage.fillAddressFields("Ukraine", "Test User", "0633330000", "79000", "Rynok Square, 1", "Lviv", "Lvivs'ka");
-        await AdressSelectPage.waitForScreenToBeAvailable();
-        await AdressSelectPage.selectTheAddress();
-        await AdressSelectPage.continue();
+        await AddressSelectPage.waitForScreenToBeAvailable();
+        await AddressSelectPage.addNewAddress();
+        await AddressCreatePage.waitForScreenToBeAvailable();
+        await AddressCreatePage.fillAddressFields("Ukraine", "Test User", "0633330000", "79000", "Rynok Square, 1", "Lviv", "Lvivs'ka");
+        await AddressSelectPage.waitForScreenToBeAvailable();
+        await AddressSelectPage.selectTheAddress();
+        await AddressSelectPage.continue();
 
 
         //Delivery Method Page ->
