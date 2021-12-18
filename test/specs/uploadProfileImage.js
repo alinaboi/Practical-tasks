@@ -25,8 +25,8 @@ describe('Editing profile info testing ', async () => {
 
         // Profile Page -> uploading image
 
-        const input = ProfilePage.choosePicInput.wdioElement;
-        const submitBtn = ProfilePage.uploadPicBtn.wdioElement;
+        const input = await ProfilePage.choosePicInput.wdioElement;
+        const submitBtn = await ProfilePage.uploadPicBtn.wdioElement;
 
         // store test file path
         const filePath = await path.join(path.resolve(), '/image/picture2.jpg');
@@ -43,7 +43,7 @@ describe('Editing profile info testing ', async () => {
             });
         const srcElement = await ProfilePage.pictureElement.getAttribute('src');
         await chai.expect(srcElement).to.not.equal('/assets/public/images/uploads/default.svg');
-        // set userName
+        // set username
         await ProfilePage.setUserName('SuperUser');
     });
 });

@@ -66,14 +66,17 @@ class MainPage extends BasePage{
     }
     async openAccountMenu() {
         await allure.addStep(`Click on Account Menu Button`);
+        await this.accountMenuBtn.wdioElement.waitForClickable({ timeout: 3000 })
         await this.accountMenuBtn.click();
     }
     async openSideNavMenu() {
         await allure.addStep(`Click on the Side Navigation Menu Button`);
+        await this.sideNavMenuBtn.wdioElement.waitForClickable({ timeout: 5000 });
         await this.sideNavMenuBtn.click();
     }
     async navigateToLogin() {
         await allure.addStep(`Navigation to the Login Page`);
+        await this.loginBtn.wdioElement.waitForClickable({ timeout: 3000 })
         await this.loginBtn.click();
     }
     async ordersAndPayment() {
@@ -90,6 +93,7 @@ class MainPage extends BasePage{
     }
     async navigateToAboutPage() {
         await allure.addStep(`Navigation to the About Page`);
+        await this.aboutUsBtn.wdioElement.waitForClickable({ timeout: 5000 });
         await this.aboutUsBtn.click();
     }
     async navigateToContactPage() {

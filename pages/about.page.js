@@ -58,6 +58,7 @@ class AboutPage extends BasePage {
     }
     async navigateToFacebook() {
         await allure.addStep(`Navigation to company's Facebook Page`);
+        await this.facebookBtn.wdioElement.waitForClickable({ timeout: 5000 });
         await this.facebookBtn.click();
     }
     async navigateToSlack() {

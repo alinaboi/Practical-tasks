@@ -24,7 +24,7 @@ describe('Full purchase flow testing ', async () => {
         await LoginPage.login(user.email, user.password);
 
         //Search Page ->adding items
-        await SearchPage.open();
+        //await SearchPage.open();
         await SearchPage.waitForScreenToBeAvailable();
 
         await SearchPage.changeIthemsQuantity("36");
@@ -60,6 +60,7 @@ describe('Full purchase flow testing ', async () => {
         await AddressSelectPage.addNewAddress();
         await AddressCreatePage.waitForScreenToBeAvailable();
         await AddressCreatePage.fillAddressFields("Ukraine", "Test User", "0633330000", "79000", "Rynok Square, 1", "Lviv", "Lvivs'ka");
+        await AddressCreatePage.submit();
         await AddressSelectPage.waitForScreenToBeAvailable();
         await AddressSelectPage.selectTheAddress();
         await AddressSelectPage.continue();

@@ -16,7 +16,7 @@ describe('Negative Address creation testing ', async () => {
         await MainPage.loginBtn.wdioElement.waitForClickable({timeout: 5000});
         await MainPage.navigateToLogin();
         await LoginPage.waitForScreenToBeAvailable();
-        await LoginPage.login(user.password, user.email);
+        await LoginPage.login(user.email, user.password);
 
         //Search Page ->Address Saved Page
         await MainPage.openAccountMenu();
