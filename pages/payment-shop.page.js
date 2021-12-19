@@ -60,7 +60,7 @@ class PaymentShopPage extends BasePage {
 
     async open() {
         await allure.startStep(`Navigation to the Search Page`);
-        await super.open(`http://localhost:3000/#/delivery-method`);
+        await super.open(`${global.baseUrl}#/delivery-method`);
         /*if (await this.closePopupBtn.isExisting())
             await this.closePopupBtn.click();
         if (await this.closeCookieBtn.isExisting())
