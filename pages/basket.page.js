@@ -72,7 +72,7 @@ class BasketPage extends BasePage {
 
     async open() {
         await allure.startStep(`Navigation to the Search Page`);
-        await super.open(`http://localhost:3000/#/basket`);
+        await super.open(`${global.baseUrl}#/basket`);
         /*if (await this.closePopupBtn.isExisting())
             await this.closePopupBtn.click();
         if (await this.closeCookieBtn.isExisting())
