@@ -43,7 +43,5 @@ describe('Editing profile info testing ', async () => {
             });
         const srcElement = await ProfilePage.pictureElement.getAttribute('src');
         await chai.expect(srcElement).to.not.equal('/assets/public/images/uploads/default.svg');
-        // set username
-        await ProfilePage.setUserName('SuperUser');
     });
 });
