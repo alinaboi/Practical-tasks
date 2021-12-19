@@ -75,10 +75,6 @@ class AddressCreatePage extends BasePage {
     async open() {
         await allure.startStep(`Navigation to the Search Page`);
         await super.open(`http://localhost:3000/#/address/select`);
-        /*if (await this.closePopupBtn.isExisting())
-            await this.closePopupBtn.click();
-        if (await this.closeCookieBtn.isExisting())
-            await this.closeCookieBtn.click();*/
         await allure.endStep(`passed`);
     }
     async waitForScreenToBeAvailable() {
@@ -93,12 +89,11 @@ class AddressCreatePage extends BasePage {
         await this.zipCodeInput.setValue(zipCode);
         await this.addressInput.setValue(address);
         await this.cityInput.setValue(city);
-        await this.stateInput.setValue(state);
         await allure.endStep(`passed`);
-
     }
     async submit() {
         await allure.addStep('Click on Submit Button');
+        await this.submitBtn.wdioElement.waitForClickable({timeout: 10000});
         await this.submitBtn.click();
     }
 }
