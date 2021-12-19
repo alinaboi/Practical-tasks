@@ -14,12 +14,18 @@ exports.config = {
     exclude: [],
     maxInstances: 10,
 
-    capabilities: [{
+    capabilities: [
+    //     {
+    //     maxInstances: 1,
+    //     browserName: 'chrome',
+    //     acceptInsecureCerts: true
+    // },
+    {
         maxInstances: 1,
-        //browserName: 'chrome',
         browserName: 'firefox',
         acceptInsecureCerts: true
-    }],
+    }
+],
     logLevel: 'info',
     bail: 0,
     before() {

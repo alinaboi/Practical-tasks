@@ -12,18 +12,11 @@ describe('API testing', async () => {
         // Login
         const response = await LoginViaApi.loginAndSetToken(user.email, user.password);
         chai.expect(response.status).to.be.equal(200);
+
         //Getting UserID
-        await browser.pause(2000);
         const userResponse = await userApi.getMyself();
         console.log("OOOOAlina" + JSON.stringify(userResponse));
-
-        await browser.pause(2000);
-        const userResponse2 = await userApi.getMyself();
-        console.log("OOOOAlina" + JSON.stringify(userResponse2));
-
-        await browser.pause(2000);
-        const userResponse3 = await userApi.getMyself();
-        console.log("OOOOAlina" + JSON.stringify(userResponse3));
+        
         //Sending Feadback
         //const feadbackResponse = await FeadbackApi.sendFeadback()
 
