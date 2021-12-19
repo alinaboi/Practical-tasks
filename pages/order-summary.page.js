@@ -65,7 +65,7 @@ class OrderSummaryPage extends BasePage {
 
     async open() {
         await allure.startStep(`Navigation to the Search Page`);
-        await super.open(`http://localhost:3000/#/order-summary`);
+        await super.open(`${global.baseUrl}#/order-summary`);
         /*if (await this.closePopupBtn.isExisting())
             await this.closePopupBtn.click();
         if (await this.closeCookieBtn.isExisting())
@@ -76,10 +76,6 @@ class OrderSummaryPage extends BasePage {
         await this.accountMenuBtn.waitForDisplayed();
         await this.sideNavMenuBtn.waitForDisplayed();
     }
-    // async totalPriceCheck(price) {
-    //     let priceExpected =  new Label(this.totalPrice.wdioElement + `[contains(text(),"${price}")]`, "Total Price");
-
-    // }
     async submitOrder() {
 
         await allure.addStep(`Click on Place your order and pay Button`);
