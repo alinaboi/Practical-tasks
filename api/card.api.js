@@ -4,6 +4,7 @@ class CardApi {
     constructor() {}
 
     async addCard(personName, cardNumber, expieryM, expieryY) {
+        await allure.addStep(`POST Card`);
         return await baseApi.post("api/Cards/", {
             fullName: personName,
             cardNum: cardNumber,

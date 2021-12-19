@@ -4,6 +4,7 @@ class AddressViaApi {
     constructor() {}
 
     async addAddress(contry, personName, mobileNum, zipCode, address) {
+        await allure.addStep(`POST Address`);
         return await baseApi.post("api/Addresss/", {
             country: contry,
             fullName: personName,
@@ -11,6 +12,7 @@ class AddressViaApi {
             zipCode: zipCode,
             streetAddress: address,
         });
+        
     }
 
 }

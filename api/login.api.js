@@ -7,19 +7,18 @@ class LoginViaApi {
 
 
     async loginAndSetToken(email, password) {
+        await allure.addStep(`POST User Login with ${email} and recive token`);
         const response = await baseApi.post("rest/user/login", {
             "email": email,
             "password": password
         });
-        await console.log('ALinaaaaao6 ' + JSON.stringify(JSON.parse(response.text)));
-
 
         this.token = JSON.parse(response.text).authentication.token;
-        await console.log('Tooooooken' + this.token)
         return response;
     }
 
     async login(email, password) {
+        await allure.addStep(`POST User Login with ${email}`);
         return await baseApi.post("rest/user/login", {
             "email": email,
             "password": password
