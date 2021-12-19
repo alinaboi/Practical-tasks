@@ -83,7 +83,7 @@ class AddressSavedPage extends BasePage {
         await this.cityInput.setValue(city);
         await this.stateInput.setValue(state);
         await this.submitBtn.wdioElement.waitForClickable({
-            timeout: 5000
+            timeout: 10000
         });
         await this.submitBtn.click();
         await allure.endStep(`passed`);
