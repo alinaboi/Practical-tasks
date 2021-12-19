@@ -35,7 +35,7 @@ class OrderCompletionPage extends BasePage {
 
     async open() {
         await allure.startStep(`Navigation to the Order-Completion Page`);
-        await super.open(`http://localhost:3000/#/order-completion`);
+        await super.open(`${global.baseUrl}#/order-completion`);
         /*if (await this.closePopupBtn.isExisting())
             await this.closePopupBtn.click();
         if (await this.closeCookieBtn.isExisting())
