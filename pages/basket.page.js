@@ -91,26 +91,26 @@ class BasketPage extends BasePage {
         await this.basketBtn.click();
     }
     async removeStrawberryJuice() {
-        await allure.addStep(`Click on Remove the ithem from Basket Button`);
+        await allure.addStep(`Click on Remove the item from Basket Button`);
         await this.removeStrawberryJuiceBtn.click();
     }
     async removeApplePomace() {
-        await allure.addStep(`Click on Remove the ithem from Basket Button`);
+        await allure.addStep(`Click on Remove the item from Basket Button`);
         await this.removeApplePomaceBtn.click();
     }
     async removeBananaJuice() {
-        await allure.addStep(`Click on Remove the ithem from Basket Button`);
+        await allure.addStep(`Click on Remove the item from Basket Button`);
         await this.removeBananaJuiceBtn.click();
     }
     async removeEggfruitJuice() {
-        await allure.addStep(`Click on Remove the ithem from Basket Button`);
+        await allure.addStep(`Click on Remove the item from Basket Button`);
         await this.removeEggfruitJuiceBtn.click();
     }
     async checkout() {
         await allure.addStep(`Click on Checkout Button`);
+        await this.checkoutBtn.wdioElement.waitForClickable({ timeout: 10000 })
         await this.checkoutBtn.click();
     }
-
 
 }
 export default new BasketPage();
