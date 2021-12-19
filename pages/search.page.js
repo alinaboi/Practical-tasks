@@ -133,23 +133,23 @@ class SearchPage extends BasePage {
     }
     async addSalesmanArtwork() {
         await allure.addStep(`Click on Add to Basket Button`);
-        await this.addSalesmanArtworkBtn.wdioElement.waitForClickable({timeout: 5000});
+        await this.addSalesmanArtworkBtn.wdioElement.waitForClickable({timeout: 10000});
         await this.addSalesmanArtworkBtn.click();
     }
     async addPermafrost2020Edition() {
         await allure.addStep(`Click on Add to Basket Button`);
-        await this.addPermafrost2020EditionBtn.wdioElement.waitForClickable({timeout: 5000});
+        await this.addPermafrost2020EditionBtn.wdioElement.waitForClickable({timeout: 10000});
         await this.addPermafrost2020EditionBtn.click();
     }
     async addMelonBike() {
         await allure.addStep(`Click on Add to Basket Button`);
-        await this.addMelonBikeBtn.wdioElement.waitForClickable({timeout: 5000});
+        await this.addMelonBikeBtn.wdioElement.waitForClickable({timeout: 10000});
         await this.addMelonBikeBtn.click();
     }
     async changeIthemsQuantity(text) {
         await allure.addStep(`Change the quantity of ithems on the page`);
         await this.ithemsPerPageDropdown.wdioElement.waitForClickable({
-            timeout: 5000
+            timeout: 10000
         });
         await this.ithemsPerPageDropdown.select(text);
     }
