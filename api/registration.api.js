@@ -19,7 +19,7 @@ class RegistrationViaApi {
     }
 
     async register(email, password) {
-        return await baseApi.post("/Users", {
+        return await baseApi.post("api/Users", {
             "email": email,
             "password": password,
             "passwordRepeat": password,
