@@ -58,7 +58,7 @@ class AddressSavedPage extends BasePage {
 
     async open() {
         await allure.startStep(`Navigation to the Search Page`);
-        await super.open(`http://localhost:3000/#/address/select`);
+        await super.open(`${global.baseUrl}#/address/select`);
         /*if (await this.closePopupBtn.isExisting())
             await this.closePopupBtn.click();
         if (await this.closeCookieBtn.isExisting())
