@@ -30,14 +30,12 @@ describe('Buying the last item flow testing ', async () => {
 
         await SearchPage.addSalesmanArtwork();
         await SearchPage.addPermafrost2020Edition();
-        await SearchPage.addMelonBike();
         await SearchPage.openBasket();
 
         //Basket Page -> removing items, changing the quantity ->verify if the order correct
         await BasketPage.waitForScreenToBeAvailable();
         await expect(BasketPage.salesmanArtworkText.wdioElement).toBeDisplayed();
         await expect(BasketPage.permafrost2020EditionText.wdioElement).toBeDisplayed();
-        await expect(BasketPage.melonBikeText.wdioElement).toBeDisplayed();
         await BasketPage.checkoutBtn.wdioElement.waitForClickable({timeout: 10000});
         await BasketPage.checkout();
 
@@ -70,7 +68,6 @@ describe('Buying the last item flow testing ', async () => {
         await OrderSummaryPage.waitForScreenToBeAvailable();
         await expect(OrderSummaryPage.salesmanArtworkText.wdioElement).toBeDisplayed();
         await expect(OrderSummaryPage.permafrost2020EditionText.wdioElement).toBeDisplayed();
-        await expect(OrderSummaryPage.melonBikeText.wdioElement).toBeDisplayed();
         await expect(OrderSummaryPage.customerPhoneNumber.wdioElement).toBeDisplayed();
         await OrderSummaryPage.submitOrder();
 
