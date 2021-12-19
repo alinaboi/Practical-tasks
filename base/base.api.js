@@ -10,6 +10,8 @@ class BaseApi {
     const finalUrl = baseUrl + url;
     return await superagent
       .post(finalUrl)
+      .set('Cookie', `token=${loginApi.token}`)
+      .set("Authorization", `Bearer ${loginApi.token}`)
       .send(body)
       .then(response => {
         console.info(`Received successful response during POST request to ${finalUrl}. Response: ${JSON.stringify(response)}`);

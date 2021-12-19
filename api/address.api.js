@@ -3,13 +3,13 @@ import baseApi from "../base/base.api.js";
 class AddressViaApi {
     constructor() {}
 
-    async addAddress(userId, captchaId, captchaAnsw, comment, rating) {
-        return await baseApi.post("api/Feedbacks/", {
-            "UserId": userId,
-            "captchaId": captchaId,
-            "captcha": captchaAnsw,
-            "comment": comment,
-            "rating": rating
+    async addAddress(contry, personName, mobileNum, zipCode, address) {
+        return await baseApi.post("api/Addresss/", {
+            country: contry,
+            fullName: personName,
+            mobileNum: mobileNum,
+            zipCode: zipCode,
+            streetAddress: address,
         });
     }
 
