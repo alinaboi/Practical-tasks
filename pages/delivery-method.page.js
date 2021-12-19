@@ -37,12 +37,9 @@ class DeliveryMethodPage extends BasePage {
         return new Button ($('(//button[@aria-label="Proceed to delivery method selection"])'), "Navigate to delivery method selection")
     }
     
-
-
-
     async open() {
         await allure.startStep(`Navigation to the Search Page`);
-        await super.open(`http://localhost:3000/#/delivery-method`);
+        await super.open(`${global.baseUrl}#/delivery-method`);
         /*if (await this.closePopupBtn.isExisting())
             await this.closePopupBtn.click();
         if (await this.closeCookieBtn.isExisting())
@@ -63,7 +60,5 @@ class DeliveryMethodPage extends BasePage {
         await this.continueBtn.click();
     }
     
-
-
 }
 export default new DeliveryMethodPage();
