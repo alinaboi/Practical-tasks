@@ -14,7 +14,7 @@ describe('Editing profile info testing ', async () => {
         await MainPage.waitForScreenToBeAvailable();
         await MainPage.openAccountMenu();
         await MainPage.loginBtn.wdioElement.waitForClickable({
-            timeout: 5000
+            timeout: 10000
         });
         await MainPage.navigateToLogin();
         await LoginPage.waitForScreenToBeAvailable();
