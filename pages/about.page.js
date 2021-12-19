@@ -45,7 +45,7 @@ class AboutPage extends BasePage {
 
     async open() {
         await allure.startStep(`Navigation to the About Page`);
-        await super.open(`http://localhost:3000/#/about`);
+        await super.open(`${global.baseUrl}#/about`);
         if (await this.closePopupBtn.isExisting())
             await this.closePopupBtn.click();
         if (await this.closeCookieBtn.isExisting())
