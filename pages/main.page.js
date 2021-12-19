@@ -57,7 +57,8 @@ class MainPage extends BasePage{
 
     async open() {
         await allure.startStep(`Navigation to the Main Page`);
-        await super.open(`http://localhost:3000/#`);
+        await super.open(`${global.baseUrl}#`);
+        await this.waitForScreenToBeAvailable();
         if (await this.closePopupBtn.isExisting())
             await this.closePopupBtn.click();
         if (await this.closeCookieBtn.isExisting())
@@ -102,6 +103,7 @@ class MainPage extends BasePage{
     }
     async navigateToProfile() {
         await allure.addStep(`Navigation to Profile Page`);
+        await this.userProfileBtn.wdioElement.waitForClickable({ timeout: 5000 });
         await this.userProfileBtn.click();
     }
     async isLogoutBtnDisplayed() {
