@@ -62,7 +62,7 @@ class SearchPage extends BasePage {
         return new Button($('(//button[@aria-label="Add to Basket"])[34]'), "");
     }
     get ithemsPerPageDropdown() {
-        return new Dropdown($("//div[starts-with(@class,'mat-select-value ng-tns-c131')]"), "Change the quantity of ithems on the page")
+        return new Dropdown($("//div[starts-with(@class,'mat-select-value ng-tns-c131')]"), "Change the quantity of items on the page")
     }
     get footer() {
         return new Label($('.mat-paginator.mat-elevation-z6'), "The footer ");
@@ -82,7 +82,7 @@ class SearchPage extends BasePage {
 
     async open() {
         await allure.startStep(`Navigation to the Search Page`);
-        await super.open(`http://localhost:3000/#/search`);
+        await super.open(`${global.baseUrl}#/search`);
         /*if (await this.closePopupBtn.isExisting())
             await this.closePopupBtn.click();
         if (await this.closeCookieBtn.isExisting())
@@ -147,7 +147,7 @@ class SearchPage extends BasePage {
         await this.addMelonBikeBtn.click();
     }
     async changeIthemsQuantity(text) {
-        await allure.addStep(`Change the quantity of ithems on the page`);
+        await allure.addStep(`Change the quantity of items on the page`);
         await this.ithemsPerPageDropdown.wdioElement.waitForClickable({
             timeout: 10000
         });
