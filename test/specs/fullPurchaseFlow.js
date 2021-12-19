@@ -48,11 +48,11 @@ describe('Full purchase flow testing ', async () => {
         await BasketPage.removeApplePomace();
         await BasketPage.removeBananaJuice();
         await BasketPage.removeEggfruitJuice();
-        await expect(BasketPage.appleJuiceText.wdioElement).toBeDisplayed();
-        await expect(BasketPage.carrotJuiceText.wdioElement).toBeDisplayed();
-        await expect(BasketPage.greenSmoothieText.wdioElement).toBeDisplayed();
-        await expect(BasketPage.lemonJuiceText.wdioElement).toBeDisplayed();
-        await expect(BasketPage.orangeJuiceText.wdioElement).toBeDisplayed();
+        // await expect(BasketPage.appleJuiceText.wdioElement).toBeDisplayed();
+        // await expect(BasketPage.carrotJuiceText.wdioElement).toBeDisplayed();
+        // await expect(BasketPage.greenSmoothieText.wdioElement).toBeDisplayed();
+        // await expect(BasketPage.lemonJuiceText.wdioElement).toBeDisplayed();
+        // await expect(BasketPage.orangeJuiceText.wdioElement).toBeDisplayed();
         await BasketPage.checkout();
 
         //Address Select Page ->adding an address and selecting it
