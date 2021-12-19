@@ -41,13 +41,10 @@ class ProfilePage extends BasePage {
     get setUsernameBtn() {
         return new Button($('//button[@aria-label="Button to save/set the username"]'), "Save User Name Changes");
     }
-    // get userNameDisplayed(text) {
-    //     return new Label($(`//p[contains(text(),"${text}")]`), "User Name Signature");
-    // }
 
     async open() {
         await allure.startStep(`Navigation to the Profile Page`);
-        await super.open(`http://localhost:3000/#/profile`);
+        await super.open(`${global.baseUrl}#/profile`);
         if (await this.closePopupBtn.isExisting())
             await this.closePopupBtn.click();
         if (await this.closeCookieBtn.isExisting())
@@ -59,14 +56,8 @@ class ProfilePage extends BasePage {
         await this.backBtn.waitForDisplayed();
         await this.uploadPicBtn.waitForDisplayed();
     }
-    async uploadPic(path) {
-        await allure.startStep(`Uploading the picture`);
-        await browser.chooseFile($('//input[@id="picture"]'), path);
-        await this.uploadPicBtn(click);
-        await allure.endStep(`passed`);
-    }
-    async setUserName(text) {
-        await allure.startStep(`Adding User Name`);
+    async setUsernameAndVerify(text) {
+        await allure.startStep(`Updating Username`);
         await this.userNameInput.setValue(text);
         await this.setUsernameBtn.click();
         await new Label($(`//p[contains(text(),"${text}")]`), "User Name Signature").waitForDisplayed();
