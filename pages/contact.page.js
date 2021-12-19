@@ -54,7 +54,7 @@ class ContactPage extends BasePage {
 
     async open() {
         await allure.startStep(`Navigation to the Contact Page`);
-        await super.open(`http://localhost:3000/#/contact`);
+        await super.open(`${global.baseUrl}#/contact`);
         // if (await this.closePopupBtn.isExisting())
         //     await this.closePopupBtn.click();
         // if (await this.closeCookieBtn.isExisting())
