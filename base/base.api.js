@@ -1,13 +1,11 @@
 import superagent from "superagent";
 import loginApi from "../api/login.api.js";
 
-const baseUrl = "http://localhost:3000/";
-
 class BaseApi {
   constructor() {}
 
   async post(url, body) {
-    const finalUrl = baseUrl + url;
+    const finalUrl = global.baseUrl + url;
     return await superagent
       .post(finalUrl)
       .set('Cookie', `token=${loginApi.token}`)
@@ -23,7 +21,7 @@ class BaseApi {
       })
   }
   async get(url) {
-    const finalUrl = baseUrl + url;
+    const finalUrl = global.baseUrl + url;
     return await superagent
       .get(finalUrl)
       .set('accept', 'application/json, text/plain, */*')
