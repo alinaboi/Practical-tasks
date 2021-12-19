@@ -22,7 +22,7 @@ describe('Navigation testing', async () => {
                 return true;
             },
             {
-                timeout: 5000,
+                timeout: 10000,
                 interval: 1000,
                 timeoutMsg: 'expected Facebook Page is opened'
             }
