@@ -71,12 +71,12 @@ class SavedPaymentMethodsPage extends BasePage {
         await this.personNameInput.setValue(personName);
         await this.cardNumberInput.setValue(cardNumber);
         await this.expiryMonthDropdown.wdioElement.waitForClickable({
-            timeout: 5000
+            timeout: 10000
         });
         await this.expiryMonthDropdown.selectNumber(expiryMonth);
         await this.expiryYearDropdown.selectNumber(expiryYear);
         await this.submitBtn.wdioElement.waitForClickable({
-            timeout: 5000
+            timeout: 10000
         });
         await this.submitBtn.click();
         await allure.endStep(`passed`);
