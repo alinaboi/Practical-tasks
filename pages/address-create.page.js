@@ -74,7 +74,7 @@ class AddressCreatePage extends BasePage {
 
     async open() {
         await allure.startStep(`Navigation to the Search Page`);
-        await super.open(`http://localhost:3000/#/address/select`);
+        await super.open(`${global.baseUrl}#/address/select`);
         await allure.endStep(`passed`);
     }
     async waitForScreenToBeAvailable() {
