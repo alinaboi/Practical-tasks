@@ -52,7 +52,7 @@ class PaymentShopPage extends BasePage {
         return new Button($('(//span[contains(text(), "Submit")])'), "Submit Button")
     }
     get selectTheCardBtn() {
-        return new Button($('(//span[@class="mat-radio-outer-circle"])'), "Select User's Card")
+        return new Button($('(//mat-radio-button[contains(@class,"mat-radio-button")])[1]'), "Select User's Card")
     }
     get continueBtn() {
         return new Button ($('(//button[@aria-label="Proceed to review"])'), "Navigate to Order Summary")
