@@ -86,13 +86,13 @@ class ContactPage extends BasePage {
         await this.ratingElement.click()
 
         // Calculate and set captcha
-        await this.captchaElement.waitForDisplayed({timeout: 3000});
+        await this.captchaElement.waitForDisplayed({timeout: 10000});
         await console.log('Captcha: ' + await this.captchaElement.getText());
         const captchaResult = eval(await this.captchaElement.getText());
         await console.log('Captcha result: ' + captchaResult);
         await this.captchaInput.setValue(captchaResult);
 
-        await this.submitBtn.wdioElement.waitForClickable({timeout: 5000});
+        await this.submitBtn.wdioElement.waitForClickable({timeout: 10000});
         await this.submitBtn.click();
         await allure.endStep(`passed`);
     }
