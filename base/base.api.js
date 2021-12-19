@@ -24,7 +24,8 @@ class BaseApi {
     const finalUrl = baseUrl + url;
     return await superagent
       .get(finalUrl)
-      .set('accept', 'json')
+      .set('accept', 'application/json, text/plain, */*')
+      .set('Cookie', `token=${loginApi.token}`)
       .set("Authorization", `Bearer ${loginApi.token}`)
       .then(response => {
         console.info(`Received successful response during GET request to ${finalUrl}. Response: ${JSON.stringify(response)}`);
