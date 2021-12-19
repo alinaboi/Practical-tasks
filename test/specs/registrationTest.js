@@ -12,7 +12,7 @@ describe ('Registration testing', () => {
         await registrationPage.selectQuestion("What's your favorite place to go hiking?");
         await registrationPage.createSecurityAnswer("Carpathians");
         await registrationPage.waitForScreenToBeAvailable();
-        await registrationPage.registerBtn.wdioElement.waitForClickable({ timeout: 5000 });
+        await registrationPage.registerBtn.wdioElement.waitForClickable({ timeout: 10000 });
         await registrationPage.finishRegistration();
 
         //Verify Login Page is open
