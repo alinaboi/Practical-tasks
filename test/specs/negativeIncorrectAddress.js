@@ -2,8 +2,8 @@ import LoginPage from "../../pages/login.page.js"
 import MainPage from "../../pages/main.page.js"
 import AddressCreatePage from "../../pages/address-create.page.js"
 import AddressSavedPage from "../../pages/address-saved.page.js"
-import addressCreatePage from "../../pages/address-create.page.js";
 import RegistrationViaApi from "../../api/registration.api.js";
+import chai from "chai";
 
 describe('Negative Address creation testing ', async () => {
     it('adding new address with wrong input', async () => {
@@ -30,13 +30,10 @@ describe('Negative Address creation testing ', async () => {
         await AddressSavedPage.waitForScreenToBeAvailable();
         await AddressSavedPage.addNewAddress();
         await AddressCreatePage.waitForScreenToBeAvailable();
-        await AddressCreatePage.submitBtn.click();
         await AddressCreatePage.fillAddressFields("@#$1.", "@#$1.", "06333330", "@#$1.", "@#$1.", "@#$1.", "@#$1.");
 
         //verify if Error massage displayed
-        await browser.waitUntil(
-            async () => !addressCreatePage.submitBtn.wdioElement.isEnabled(), {
-                timeout: 3000
-            });
+        await AddressCreatePage.submitBtn.waitForDisplayed();
+        chai.expect(await AddressCreatePage.submitBtn.wdioElement.isEnabled()).to.be.false;
     });
 });
