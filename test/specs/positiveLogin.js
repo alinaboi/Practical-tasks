@@ -11,7 +11,7 @@ describe('Login testing', async () => {
         await MainPage.open();
         await MainPage.waitForScreenToBeAvailable();
         await MainPage.openAccountMenu();
-        await MainPage.loginBtn.wdioElement.waitForClickable({timeout: 5000});
+        await MainPage.loginBtn.wdioElement.waitForClickable({timeout: 10000});
         await MainPage.navigateToLogin();
 
         //Login Page
