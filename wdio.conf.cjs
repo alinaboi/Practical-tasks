@@ -85,7 +85,7 @@ exports.config = {
     logLevel: 'info',
     bail: 0,
     before() {
-        //global.allure = allureReporter;
+        global.baseUrl = 'http://localhost:3000/';
         console.log(`The test is processed. Test to be executed: ` + JSON.stringify(this.specs));
     },
     beforeSession() {
