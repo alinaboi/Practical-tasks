@@ -2,6 +2,7 @@ import BasePage from "../base/base.page.js";
 import Button from "../elements/button.js";
 import Dropdown from "../elements/dropdown.js";
 import Input from "../elements/input.js";
+import Label from "../elements/label.js";
 
 class RegistrationPage extends BasePage{
     constructor() {
@@ -44,15 +45,23 @@ class RegistrationPage extends BasePage{
     get registerBtn() {
         return new Button($('#registerButton'), "Register New User");
     }
+    get repeatPasswordMsg() {
+        return new Label($('//mat-error[contains(text(),"Please repeat your password.")]'), " Please repeat your password Massege.");
+    }
+    get providePasswordMsg() {
+        return new Label($('//mat-error[contains(text(),"Please provide a password.")]'), " Please provide a password Massege.");
+    }
+    get invalidEmailMsg() {
+        return new Label($('//mat-error[contains(text(),"Email address is not valid.")]'), " Email address is not valid Massege.");
+    }
 
     async selectQuestion(text) {
-        //await this.openListBtn.click();
         await this.questionDropdown.select(text);
     }
 
     async open() {
         await allure.startStep(`Navigation to the Registration Page`);
-        await super.open(`http://localhost:3000/#/register`);
+        await super.open(`${global.baseUrl}#/register`);
         if (await this.closePopupBtn.isExisting())
             await this.closePopupBtn.click();
         if (await this.closeCookieBtn.isExisting())

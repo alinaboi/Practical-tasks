@@ -45,7 +45,7 @@ class AboutPage extends BasePage {
 
     async open() {
         await allure.startStep(`Navigation to the About Page`);
-        await super.open(`http://localhost:3000/#/about`);
+        await super.open(`${global.baseUrl}#/about`);
         if (await this.closePopupBtn.isExisting())
             await this.closePopupBtn.click();
         if (await this.closeCookieBtn.isExisting())
@@ -58,6 +58,7 @@ class AboutPage extends BasePage {
     }
     async navigateToFacebook() {
         await allure.addStep(`Navigation to company's Facebook Page`);
+        await this.facebookBtn.wdioElement.waitForClickable({ timeout: 10000 });
         await this.facebookBtn.click();
     }
     async navigateToSlack() {

@@ -11,7 +11,6 @@ describe('Navigation testing', async () => {
         await MainPage.navigateToAboutPage();
 
         //About Page
-        await AboutPage.facebookBtn.wdioElement.waitForClickable({ timeout: 5000 });
         await AboutPage.navigateToFacebook();
         await browser.waitUntil(
             async () => {
@@ -23,23 +22,13 @@ describe('Navigation testing', async () => {
                 return true;
             },
             {
-                timeout: 5000,
+                timeout: 10000,
                 interval: 1000,
                 timeoutMsg: 'expected Facebook Page is opened'
             }
         );
-
         
         //Verify the page is opened
         await expect ($('//span[text()="OWASP Juice Shop"]')).toBeDisplayed();
-
-        /*try {if (await $('//span[text()="OWASP Juice Shop"]').isDisplayed() === false) {
-            throw new Error;
-        }else{
-            console.log("You are successfully moved to the Facebook page!");
-        } }catch (error) {
-            console.log("Oops. Something went wrong. "+ error);
-        }
-        await browser.pause(2000);*/
     });
 });

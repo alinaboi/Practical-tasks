@@ -11,19 +11,81 @@ exports.config = {
     specs: [
         './test/specs/**/*.js'
     ],
+    suites: {
+        apiTests: [
+            './test/specs/addingAddressApi.js',
+            './test/specs/addingCardApi.js',
+            './test/specs/addingFeedbackApi.js',
+            './test/specs/negativeLoginApi.js',
+            './test/specs/positiveLoginApi.js',
+            './test/specs/registrationApi.js'
+        ],
+        positiveUiTests: [
+            './test/specs/buyingLastItems.js',
+            './test/specs/fullPurchaseFlow.js',
+            './test/specs/leavingFeedback.js',
+            './test/specs/navigateToMedia.js',
+            './test/specs/positiveLogin.js',
+            './test/specs/registrationTest.js',
+            './test/specs/uploadProfileImage.js',
+            './test/specs/updateUsername.js'
+        ],
+        negativeUiTests: [
+            './test/specs/negativeAddingCard.js',
+            './test/specs/negativeIncorrectAddress.js',
+            './test/specs/negativeLogin.js',
+            './test/specs/negativeMobileNumber.js',
+            './test/specs/negativeRegistrationEmptyPassword.js',
+            './test/specs/negativeRegistrationWrongEmail.js'
+        ],
+        regression: [
+            './test/specs/addingAddressApi.js',
+            './test/specs/addingCardApi.js',
+            './test/specs/addingFeedbackApi.js',
+            './test/specs/negativeLoginApi.js',
+            './test/specs/positiveLoginApi.js',
+            './test/specs/registrationApi.js',
+            './test/specs/buyingLastItems.js',
+            './test/specs/fullPurchaseFlow.js',
+            './test/specs/leavingFeedback.js',
+            './test/specs/navigateToMedia.js',
+            './test/specs/positiveLogin.js',
+            './test/specs/registrationTest.js',
+            './test/specs/uploadProfileImage.js',
+            './test/specs/updateUsername.js',
+            './test/specs/negativeAddingCard.js',
+            './test/specs/negativeIncorrectAddress.js',
+            './test/specs/negativeLogin.js',
+            './test/specs/negativeMobileNumber.js',
+            './test/specs/negativeRegistrationEmptyPassword.js',
+            './test/specs/negativeRegistrationWrongEmail.js'
+
+        ],
+        smoke: [
+            './test/specs/fullPurchaseFlow.js',
+            './test/specs/positiveLogin.js',
+            './test/specs/negativeLogin.js'
+        ]
+    },
     exclude: [],
     maxInstances: 10,
 
-    capabilities: [{
+    capabilities: [
+        {
         maxInstances: 1,
-        //browserName: 'chrome',
+        browserName: 'chrome',
+        acceptInsecureCerts: true
+    },
+    {
+        maxInstances: 1,
         browserName: 'firefox',
         acceptInsecureCerts: true
-    }],
+    }
+],
     logLevel: 'info',
     bail: 0,
     before() {
-        //global.allure = allureReporter;
+        global.baseUrl = 'http://localhost:3000/';
         console.log(`The test is processed. Test to be executed: ` + JSON.stringify(this.specs));
     },
     beforeSession() {
