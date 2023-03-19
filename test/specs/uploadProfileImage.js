@@ -24,7 +24,6 @@ describe('Editing profile info testing ', async () => {
         await MainPage.navigateToProfile();
 
         // Profile Page -> uploading image
-
         const input = await ProfilePage.choosePicInput.wdioElement;
         const submitBtn = await ProfilePage.uploadPicBtn.wdioElement;
 
@@ -39,8 +38,8 @@ describe('Editing profile info testing ', async () => {
 
         await browser.waitUntil(
             async () => '/assets/public/images/uploads/default.svg' !== await ProfilePage.pictureElement.getAttribute('src'), {
-                timeout: 10000
-            });
+            timeout: 10000
+        });
         const srcElement = await ProfilePage.pictureElement.getAttribute('src');
         await chai.expect(srcElement).to.not.equal('/assets/public/images/uploads/default.svg');
     });

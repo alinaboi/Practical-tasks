@@ -27,8 +27,8 @@ describe('Navigation testing', async () => {
                 timeoutMsg: 'expected Facebook Page is opened'
             }
         );
-        
+
         //Verify the page is opened
-        await expect ($('//span[text()="OWASP Juice Shop"]')).toBeDisplayed();
+        await expect($('//span[text()="OWASP Juice Shop"]')).toBeDisplayed();
     });
 });

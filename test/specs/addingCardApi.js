@@ -14,7 +14,7 @@ describe('API testing', async () => {
 
         //Adding Card
         const cardResponse = await CardApi.addCard("Person Name", "1987654321234567", "1", "2090");
-        
+
         //Verifying
         chai.expect(cardResponse.status).to.be.equal(201);
     });
@@ -28,9 +28,9 @@ describe('API testing', async () => {
 
         //Adding Empty Card
         const cardResponse = await CardApi.addCard("", "", "", "");
-        
+
         //Verifying
         chai.expect(cardResponse.status).to.be.equal(400);
     })
-        
+
 });

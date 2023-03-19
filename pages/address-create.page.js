@@ -93,7 +93,7 @@ class AddressCreatePage extends BasePage {
     }
     async submit() {
         await allure.addStep('Click on Submit Button');
-        await this.submitBtn.wdioElement.waitForClickable({timeout: 10000});
+        await this.submitBtn.wdioElement.waitForClickable({ timeout: 10000 });
         await this.submitBtn.click();
     }
 }

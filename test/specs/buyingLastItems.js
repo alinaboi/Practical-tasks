@@ -19,7 +19,7 @@ describe('Buying the last item flow testing ', async () => {
         await MainPage.open();
         await MainPage.waitForScreenToBeAvailable();
         await MainPage.openAccountMenu();
-        await MainPage.loginBtn.wdioElement.waitForClickable({timeout: 10000});
+        await MainPage.loginBtn.wdioElement.waitForClickable({ timeout: 10000 });
         await MainPage.navigateToLogin();
         await LoginPage.waitForScreenToBeAvailable();
         await LoginPage.login(user.email, user.password);
@@ -36,7 +36,7 @@ describe('Buying the last item flow testing ', async () => {
         await BasketPage.waitForScreenToBeAvailable();
         await expect(BasketPage.salesmanArtworkText.wdioElement).toBeDisplayed();
         await expect(BasketPage.permafrost2020EditionText.wdioElement).toBeDisplayed();
-        await BasketPage.checkoutBtn.wdioElement.waitForClickable({timeout: 10000});
+        await BasketPage.checkoutBtn.wdioElement.waitForClickable({ timeout: 10000 });
         await BasketPage.checkout();
 
         //Address Select Page -> adding an address and selecting it
@@ -48,7 +48,6 @@ describe('Buying the last item flow testing ', async () => {
         await AddressSelectPage.waitForScreenToBeAvailable();
         await AddressSelectPage.selectTheAddress();
         await AddressSelectPage.continue();
-
 
         //Delivery Method Page ->
         await DeliveryMethodPage.waitForScreenToBeAvailable();
@@ -62,7 +61,6 @@ describe('Buying the last item flow testing ', async () => {
         await PaymentShopPage.fillCardFields("Test User", "4953011022334455", "1", "2099");
         await PaymentShopPage.selectTheCard();
         await PaymentShopPage.continue();
-
 
         //Order-Summary Page -> verify if the order and customer's data correct
         await OrderSummaryPage.waitForScreenToBeAvailable();

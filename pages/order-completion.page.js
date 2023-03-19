@@ -9,7 +9,6 @@ class OrderCompletionPage extends BasePage {
     static getBaseElement() {
         return new BaseElement($(''), "");
     }
-
     get accountMenuBtn() {
         return new Button($('#navbarAccount'), "Account Menu");
     }
@@ -46,6 +45,6 @@ class OrderCompletionPage extends BasePage {
         await this.accountMenuBtn.waitForDisplayed();
         await this.sideNavMenuBtn.waitForDisplayed();
     }
-    
+
 }
 export default new OrderCompletionPage();

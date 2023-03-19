@@ -2,7 +2,6 @@ import BasePage from "../base/base.page.js";
 import Button from "../elements/button.js";
 import Input from "../elements/input.js";
 
-
 class ContactPage extends BasePage {
     constructor() {
         super();

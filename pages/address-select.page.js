@@ -35,9 +35,9 @@ class AddressSelectPage extends BasePage {
         return new Button($('(//mat-cell[contains(text(),"Test User")])'), "Select User's Address")
     }
     get continueBtn() {
-        return new Button ($('(//button[@aria-label="Proceed to payment selection"])'), "Navigate to payment selection")
+        return new Button($('(//button[@aria-label="Proceed to payment selection"])'), "Navigate to payment selection")
     }
-   
+
 
     async open() {
         await allure.startStep(`Navigation to the Search Page`);

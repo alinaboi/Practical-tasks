@@ -11,7 +11,7 @@ describe('Login testing', async () => {
         await MainPage.open();
         await MainPage.waitForScreenToBeAvailable();
         await MainPage.openAccountMenu();
-        await MainPage.loginBtn.wdioElement.waitForClickable({timeout: 10000});
+        await MainPage.loginBtn.wdioElement.waitForClickable({ timeout: 10000 });
         await MainPage.navigateToLogin();
 
         //Login Page
@@ -21,7 +21,6 @@ describe('Login testing', async () => {
         //Positive -> After login page
         await MainPage.waitForScreenToBeAvailable();
         await MainPage.openAccountMenu();
-
 
         //Verify Logout Button is displayed
         await MainPage.waitForAccountMenuDropdownDisplated();

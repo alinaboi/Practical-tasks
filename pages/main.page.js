@@ -1,9 +1,7 @@
 import BasePage from "../base/base.page.js";
 import Button from "../elements/button.js";
-import Dropdown from "../elements/dropdown.js";
 
-
-class MainPage extends BasePage{
+class MainPage extends BasePage {
     constructor() {
         super();
     }
@@ -52,8 +50,8 @@ class MainPage extends BasePage{
     get myPaymentOptionsBtn() {
         return new Button($('//span[contains(text(),"My Payment Options")]'), "User's Payments Menu");
     }
-    
-    
+
+
 
     async open() {
         await allure.startStep(`Navigation to the Main Page`);
@@ -63,7 +61,7 @@ class MainPage extends BasePage{
             await this.closePopupBtn.click();
         if (await this.closeCookieBtn.isExisting())
             await this.closeCookieBtn.click();
-            await allure.endStep(`passed`);
+        await allure.endStep(`passed`);
     }
     async openAccountMenu() {
         await allure.addStep(`Click on Account Menu Button`);
@@ -119,5 +117,5 @@ class MainPage extends BasePage{
         await this.accountMenuBtn.waitForDisplayed();
         await this.sideNavMenuBtn.waitForDisplayed();
     }
-    
-}export default new MainPage();
+
+} export default new MainPage();

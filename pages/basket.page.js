@@ -1,6 +1,5 @@
 import BasePage from "../base/base.page.js";
 import Button from "../elements/button.js";
-import Dropdown from "../elements/dropdown.js";
 import Label from "../elements/label.js";
 
 class BasketPage extends BasePage {

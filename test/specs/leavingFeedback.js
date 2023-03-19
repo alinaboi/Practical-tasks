@@ -11,7 +11,7 @@ describe('Leaving customer feedback ', async () => {
         await MainPage.open();
         await MainPage.waitForScreenToBeAvailable();
         await MainPage.openAccountMenu();
-        await MainPage.loginBtn.wdioElement.waitForClickable({timeout: 10000});
+        await MainPage.loginBtn.wdioElement.waitForClickable({ timeout: 10000 });
         await MainPage.navigateToLogin();
         await LoginPage.waitForScreenToBeAvailable();
         await LoginPage.login(user.email, user.password);

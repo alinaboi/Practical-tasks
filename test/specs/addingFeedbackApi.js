@@ -26,12 +26,8 @@ describe('API testing', async () => {
 
         //Sending Feadback
         const feadbackResponse = await FeadbackApi.sendFeadback(userId, captchaObject.captchaId, captchaObject.answer, "some comment", 4);
-        
+
         //Verifying
         chai.expect(feadbackResponse.status).to.be.equal(201);
-
-        
-
-
     });
 });

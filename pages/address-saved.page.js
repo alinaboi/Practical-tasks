@@ -1,6 +1,5 @@
 import BasePage from "../base/base.page.js";
 import Button from "../elements/button.js";
-import Label from "../elements/label.js";
 import Input from "../elements/input.js";
 
 class AddressSavedPage extends BasePage {

@@ -14,9 +14,9 @@ describe('API testing', async () => {
 
         //Sending Address
         const addressResponse = await AddressApi.addAddress("Ukr", "Person Name", "098765432", "90808", "User's Address");
-        
+
         //Verifying
         chai.expect(addressResponse.status).to.be.equal(201);
     })
-        
+
 });

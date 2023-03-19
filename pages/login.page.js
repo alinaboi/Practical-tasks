@@ -2,11 +2,12 @@ import BasePage from "../base/base.page.js";
 import Button from "../elements/button.js";
 import Input from "../elements/input.js";
 import Label from "../elements/label.js";
+
 class LoginPage extends BasePage {
     constructor() {
         super();
     }
-    
+
     static getBaseElement() {
         return new BaseElement($('#navbarAccount'), "Account Menu");
     }
@@ -45,7 +46,7 @@ class LoginPage extends BasePage {
             await this.closePopupBtn.click();
         if (await this.closeCookieBtn.isExisting())
             await this.closeCookieBtn.click();
-            await allure.endStep(`passed`);
+        await allure.endStep(`passed`);
     }
 
     async waitForScreenToBeAvailable() {

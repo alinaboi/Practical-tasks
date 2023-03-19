@@ -18,7 +18,7 @@ describe('Full purchase flow testing ', async () => {
         await MainPage.open();
         await MainPage.waitForScreenToBeAvailable();
         await MainPage.openAccountMenu();
-        await MainPage.loginBtn.wdioElement.waitForClickable({timeout: 10000});
+        await MainPage.loginBtn.wdioElement.waitForClickable({ timeout: 10000 });
         await MainPage.navigateToLogin();
         await LoginPage.waitForScreenToBeAvailable();
         await LoginPage.login(user.email, user.password);
@@ -31,10 +31,10 @@ describe('Full purchase flow testing ', async () => {
         await SearchPage.addAppleJuice();
         await SearchPage.addApplePomace();
         await SearchPage.addBananaJuice();
-        await SearchPage.addCarrotJuiceBtn.wdioElement.waitForClickable({timeout: 10000});
+        await SearchPage.addCarrotJuiceBtn.wdioElement.waitForClickable({ timeout: 10000 });
         await SearchPage.addCarrotJuice();
         await SearchPage.addEggfruitJuice();
-        await SearchPage.addGreenSmoothieBtn.wdioElement.waitForClickable({timeout: 10000});
+        await SearchPage.addGreenSmoothieBtn.wdioElement.waitForClickable({ timeout: 10000 });
         await SearchPage.addGreenSmoothie();
         await SearchPage.addLemonJuice();
         await SearchPage.addOrangeJuice();
@@ -43,7 +43,7 @@ describe('Full purchase flow testing ', async () => {
 
         //Basket Page ->removing items, changing the quantity ->verify if the order correct
         await BasketPage.waitForScreenToBeAvailable();
-        await BasketPage.removeStrawberryJuiceBtn.wdioElement.waitForClickable({timeout: 10000});
+        await BasketPage.removeStrawberryJuiceBtn.wdioElement.waitForClickable({ timeout: 10000 });
         await BasketPage.removeStrawberryJuice();
         await BasketPage.removeApplePomace();
         await BasketPage.removeBananaJuice();
@@ -65,7 +65,6 @@ describe('Full purchase flow testing ', async () => {
         await AddressSelectPage.selectTheAddress();
         await AddressSelectPage.continue();
 
-
         //Delivery Method Page ->
         await DeliveryMethodPage.waitForScreenToBeAvailable();
         await DeliveryMethodPage.standardDelivery();
@@ -78,7 +77,6 @@ describe('Full purchase flow testing ', async () => {
         await PaymentShopPage.fillCardFields("Test User", "4953011022334455", "1", "2099");
         await PaymentShopPage.selectTheCard();
         await PaymentShopPage.continue();
-
 
         //Order-Summary Page ->verify if the order and customer's data correct
         await OrderSummaryPage.waitForScreenToBeAvailable();
@@ -93,6 +91,5 @@ describe('Full purchase flow testing ', async () => {
         //Order Completion Page ->verify if the order is complete
         await OrderCompletionPage.waitForScreenToBeAvailable();
         await expect(OrderCompletionPage.thankYouMsg.wdioElement).toBeDisplayed();
-
     });
 });

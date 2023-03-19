@@ -1,8 +1,6 @@
 import BasePage from "../base/base.page.js";
 import Button from "../elements/button.js";
-import Dropdown from "../elements/dropdown.js";
 import Label from "../elements/label.js";
-import Input from "../elements/input.js";
 
 class DeliveryMethodPage extends BasePage {
     constructor() {
@@ -34,9 +32,9 @@ class DeliveryMethodPage extends BasePage {
         return new Button($('(//mat-cell[contains(text(), "Standard Delivery")])'), "Standard Delivery 5 days")
     }
     get continueBtn() {
-        return new Button ($('(//button[@aria-label="Proceed to delivery method selection"])'), "Navigate to delivery method selection")
+        return new Button($('(//button[@aria-label="Proceed to delivery method selection"])'), "Navigate to delivery method selection")
     }
-    
+
     async open() {
         await allure.startStep(`Navigation to the Search Page`);
         await super.open(`${global.baseUrl}#/delivery-method`);
@@ -59,6 +57,6 @@ class DeliveryMethodPage extends BasePage {
         await allure.addStep(`Click on Continue Button`);
         await this.continueBtn.click();
     }
-    
+
 }
 export default new DeliveryMethodPage();
