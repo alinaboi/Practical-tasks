@@ -1,9 +1,9 @@
-import RegistrationViaApi from "../../api/registration.api.js";
-import LoginViaApi from "../../api/login.api.js";
-import FeadbackApi from "../../api/feadback.api.js";
+import RegistrationViaApi from "../../../api/registration.api.js";
+import LoginViaApi from "../../../api/login.api.js";
+import FeadbackApi from "../../../api/feadback.api.js";
 import chai from "chai";
-import UserApi from "../../api/user.api.js";
-import CaptchaApi from "../../api/captcha.api.js"
+import UserApi from "../../../api/user.api.js";
+import CaptchaApi from "../../../api/captcha.api.js"
 
 describe('API testing', async () => {
     it('adding Feadback via API', async () => {

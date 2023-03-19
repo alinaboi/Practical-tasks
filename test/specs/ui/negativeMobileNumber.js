@@ -1,9 +1,9 @@
-import LoginPage from "../../pages/login.page.js"
-import MainPage from "../../pages/main.page.js"
-import AddressCreatePage from "../../pages/address-create.page.js"
-import AddressSavedPage from "../../pages/address-saved.page.js"
-import addressCreatePage from "../../pages/address-create.page.js";
-import RegistrationViaApi from "../../api/registration.api.js";
+import LoginPage from "../../../pages/login.page.js"
+import MainPage from "../../../pages/main.page.js"
+import AddressCreatePage from "../../../pages/address-create.page.js"
+import AddressSavedPage from "../../../pages/address-saved.page.js"
+import addressCreatePage from "../../../pages/address-create.page.js";
+import RegistrationViaApi from "../../../api/registration.api.js";
 
 describe('Negative Address creation testing ', async () => {
     it('adding new address with wrong mobile number input', async () => {

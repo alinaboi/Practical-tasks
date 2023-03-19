@@ -1,7 +1,7 @@
-import LoginPage from "../../pages/login.page.js"
-import MainPage from "../../pages/main.page.js"
-import ProfilePage from "../../pages/profile.page.js"
-import RegistrationViaApi from "../../api/registration.api.js";
+import LoginPage from "../../../pages/login.page.js"
+import MainPage from "../../../pages/main.page.js"
+import ProfilePage from "../../../pages/profile.page.js"
+import RegistrationViaApi from "../../../api/registration.api.js";
 import chai from "chai";
 import path from "path"
 

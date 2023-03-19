@@ -1,14 +1,14 @@
-import LoginPage from "../../pages/login.page.js"
-import MainPage from "../../pages/main.page.js"
-import SearchPage from "../../pages/search.page.js"
-import BasketPage from "../../pages/basket.page.js"
-import AddressSelectPage from "../../pages/address-select.page.js"
-import AddressCreatePage from "../../pages/address-create.page.js"
-import DeliveryMethodPage from "../../pages/delivery-method.page.js"
-import PaymentShopPage from "../../pages/payment-shop.page.js"
-import OrderSummaryPage from "../../pages/order-summary.page.js"
-import OrderCompletionPage from "../../pages/order-completion.page.js"
-import RegistrationViaApi from "../../api/registration.api.js";
+import LoginPage from "../../../pages/login.page.js"
+import MainPage from "../../../pages/main.page.js"
+import SearchPage from "../../../pages/search.page.js"
+import BasketPage from "../../../pages/basket.page.js"
+import AddressSelectPage from "../../../pages/address-select.page.js"
+import AddressCreatePage from "../../../pages/address-create.page.js"
+import DeliveryMethodPage from "../../../pages/delivery-method.page.js"
+import PaymentShopPage from "../../../pages/payment-shop.page.js"
+import OrderSummaryPage from "../../../pages/order-summary.page.js"
+import OrderCompletionPage from "../../../pages/order-completion.page.js"
+import RegistrationViaApi from "../../../api/registration.api.js";
 import chai from "chai";
 
 describe('Buying the last item flow testing ', async () => {

@@ -1,7 +1,7 @@
-import LoginPage from "../../pages/login.page.js"
-import MainPage from "../../pages/main.page.js"
-import ContactPage from "../../pages/contact.page.js"
-import RegistrationViaApi from "../../api/registration.api.js";
+import LoginPage from "../../../pages/login.page.js"
+import MainPage from "../../../pages/main.page.js"
+import ContactPage from "../../../pages/contact.page.js"
+import RegistrationViaApi from "../../../api/registration.api.js";
 
 describe('Leaving customer feedback ', async () => {
     it('leaving a feedback with rating 3', async () => {

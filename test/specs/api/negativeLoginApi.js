@@ -1,5 +1,5 @@
-import RegistrationViaApi from "../../api/registration.api.js";
-import LoginViaApi from "../../api/login.api.js";
+import RegistrationViaApi from "../../../api/registration.api.js";
+import LoginViaApi from "../../../api/login.api.js";
 import chai from "chai";
 
 describe('API testing', async () => {

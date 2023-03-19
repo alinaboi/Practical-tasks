@@ -1,6 +1,6 @@
-import LoginPage from "../../pages/login.page.js";
-import MainPage from "../../pages/main.page.js";
-import RegistrationViaApi from "../../api/registration.api.js";
+import LoginPage from "../../../pages/login.page.js";
+import MainPage from "../../../pages/main.page.js";
+import RegistrationViaApi from "../../../api/registration.api.js";
 
 describe('Login testing', async () => {
     it('positive login test using PageObject', async () => {

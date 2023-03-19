@@ -1,5 +1,5 @@
-import LoginPage from "../../pages/login.page.js"
-import MainPage from "../../pages/main.page.js"
+import LoginPage from "../../../pages/login.page.js"
+import MainPage from "../../../pages/main.page.js"
 
 describe('Login testing', async () => {
     it('negative login test using PageObject', async () => {

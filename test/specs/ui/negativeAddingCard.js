@@ -1,7 +1,7 @@
-import LoginPage from "../../pages/login.page.js"
-import MainPage from "../../pages/main.page.js"
-import SavedPaymentMethodsPage from "../../pages/saved-payment-methods.page.js"
-import RegistrationViaApi from "../../api/registration.api.js";
+import LoginPage from "../../../pages/login.page.js"
+import MainPage from "../../../pages/main.page.js"
+import SavedPaymentMethodsPage from "../../../pages/saved-payment-methods.page.js"
+import RegistrationViaApi from "../../../api/registration.api.js";
 
 describe('Negative Card creation testing ', async () => {
     it('adding new card with incorrect card number input', async () => {

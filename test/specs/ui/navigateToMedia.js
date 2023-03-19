@@ -1,5 +1,5 @@
-import AboutPage from "../../pages/about.page.js"
-import MainPage from "../../pages/main.page.js"
+import AboutPage from "../../../pages/about.page.js"
+import MainPage from "../../../pages/main.page.js"
 
 describe('Navigation testing', async () => {
     it('test switching to social media pages through About page', async () => {

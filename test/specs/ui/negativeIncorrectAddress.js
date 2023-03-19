@@ -1,8 +1,8 @@
-import LoginPage from "../../pages/login.page.js"
-import MainPage from "../../pages/main.page.js"
-import AddressCreatePage from "../../pages/address-create.page.js"
-import AddressSavedPage from "../../pages/address-saved.page.js"
-import RegistrationViaApi from "../../api/registration.api.js";
+import LoginPage from "../../../pages/login.page.js"
+import MainPage from "../../../pages/main.page.js"
+import AddressCreatePage from "../../../pages/address-create.page.js"
+import AddressSavedPage from "../../../pages/address-saved.page.js"
+import RegistrationViaApi from "../../../api/registration.api.js";
 import chai from "chai";
 
 describe('Negative Address creation testing ', async () => {
