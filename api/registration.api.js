@@ -45,6 +45,4 @@ class RegistrationViaApi {
         }
         return result + '@gmail.com';
     }
-}
-
-export default new RegistrationViaApi();
+} export default new RegistrationViaApi();
