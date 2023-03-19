@@ -2,8 +2,8 @@ import loginPage from "../../pages/login.page.js";
 import registrationPage from "../../pages/registration.page.js";
 import registrationApi from "../../api/registration.api.js";
 
-describe ('Registration testing', () => {
-    it ('positive registration test', async () => {
+describe('Registration testing', () => {
+    it('positive registration test', async () => {
 
         //Registration Page
         await registrationPage.open();
