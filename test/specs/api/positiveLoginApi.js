@@ -1,5 +1,5 @@
 import RegistrationViaApi from "../../../api/registration.api.js";
-import LoginViaApi from "../../../api/login.api.js";
+import Api from "../../../api/login.api.js";
 import chai from "chai";
 
 describe('API testing', async () => {
@@ -7,7 +7,7 @@ describe('API testing', async () => {
 
         //Registration via API
         const user = await RegistrationViaApi.registerAndReturnUser();
-        const response = await LoginViaApi.login(user.email, user.password);
+        const response = await Api.login(user.email, user.password);
         chai.expect(response.status).to.be.equal(200);
     });
 });

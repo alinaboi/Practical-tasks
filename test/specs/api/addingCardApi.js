@@ -1,5 +1,5 @@
 import RegistrationViaApi from "../../../api/registration.api.js";
-import LoginViaApi from "../../../api/login.api.js";
+import Api from "../../../api/login.api.js";
 import CardApi from "../../../api/card.api.js";
 import chai from "chai";
 
@@ -9,7 +9,7 @@ describe('API testing', async () => {
         const user = await RegistrationViaApi.registerAndReturnUser();
 
         //Login
-        const response = await LoginViaApi.loginAndSetToken(user.email, user.password);
+        const response = await Api.loginAndSetToken(user.email, user.password);
         chai.expect(response.status).to.be.equal(200);
 
         //Adding Card
@@ -23,7 +23,7 @@ describe('API testing', async () => {
         const user = await RegistrationViaApi.registerAndReturnUser();
 
         //Login
-        const response = await LoginViaApi.loginAndSetToken(user.email, user.password);
+        const response = await Api.loginAndSetToken(user.email, user.password);
         chai.expect(response.status).to.be.equal(200);
 
         //Adding Empty Card

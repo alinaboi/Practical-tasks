@@ -1,5 +1,5 @@
 import RegistrationViaApi from "../../../api/registration.api.js";
-import LoginViaApi from "../../../api/login.api.js";
+import Api from "../../../api/login.api.js";
 import FeadbackApi from "../../../api/feadback.api.js";
 import chai from "chai";
 import UserApi from "../../../api/user.api.js";
@@ -12,7 +12,7 @@ describe('API testing', async () => {
         const user = await RegistrationViaApi.registerAndReturnUser();
 
         //Login
-        const response = await LoginViaApi.loginAndSetToken(user.email, user.password);
+        const response = await Api.loginAndSetToken(user.email, user.password);
         chai.expect(response.status).to.be.equal(200);
 
         //Getting UserID

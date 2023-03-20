@@ -1,6 +1,6 @@
 import baseApi from "../base/base.api.js";
 
-class LoginViaApi {
+class Api {
     constructor() {
         this.token = '';
     }
@@ -29,6 +29,29 @@ class LoginViaApi {
         });
         return response;
     }
+
+    async addAddress(address) {
+        await allure.addStep(`POST Address`);
+        return await baseApi.post("api/Addresss/", {
+            country: address.country,
+            fullName: address.personName,
+            mobileNum: address.mobileNum,
+            zipCode: address.zipCode,
+            streetAddress: address.address
+        });
+        return response;
+    }
+    
+    async addCard(cardData) {
+        await allure.addStep(`POST Card`);
+        return await baseApi.post("api/Cards/", {
+            fullName: cardData.personName,
+            cardNum: cardData.cardNumber,
+            expMonth: cardData.expieryM,
+            expYear: cardData.expieryY
+        });
+        return response;
+    }
 }
 
-export default new LoginViaApi();
+export default new Api();

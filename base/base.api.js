@@ -1,5 +1,5 @@
 import superagent from "superagent";
-import loginApi from "../api/login.api.js";
+import loginApi from "../api/main.api.js";
 
 class BaseApi {
   constructor() {}
