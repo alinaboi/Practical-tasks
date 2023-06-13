@@ -14,6 +14,4 @@ class CaptchaApi {
         return JSON.parse(response.text);
         
     }
-}
-
-export default new CaptchaApi();
+} export default new CaptchaApi();
