@@ -1,15 +1,16 @@
-import baseApi from "../base/base.api.js";
+import basketApi from "./basket.api.js";
 import addressApi from "./address.api.js";
 import cardApi from "./card.api.js";
 import captchaApi from "./captcha.api.js";
 import feadbackApi from "./feadback.api.js";
 import loginApi from "./login.api.js";
 import registrationApi from "./registration.api.js";
+import checkoutApi from "./checkout.api.js";
 
 class Api {
     constructor() {
     }
-    
+
     async addressApi() {
         return addressApi;
     }
@@ -34,17 +35,14 @@ class Api {
         return registrationApi;
     }
 
-
-    async addToBasket(bId, productId, quantity) {
-        await allure.addStep(`POST add product ${productId} *${quantity} to the basket ${bId}`);
-        let response = await baseApi.post("/api/BasketItems/", {
-            "ProductId": productId,
-            "BasketId": `${bId}`,
-            "quantity": quantity
-        });
-        console.log(`RESPONSE ===>>> ${response}`)
-        return response;
+    async basketApi() {
+        return basketApi;
     }
+
+    async checkoutApi() {
+        return checkoutApi;
+    }
+
 }
 
 export default new Api();
