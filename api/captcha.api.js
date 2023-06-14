@@ -12,6 +12,5 @@ class CaptchaApi {
         await allure.addStep(`Get Captcha Obdject`);
         const response = await this.getCaptcha();
         return JSON.parse(response.text);
-        
     }
 } export default new CaptchaApi();

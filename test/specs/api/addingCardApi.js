@@ -18,6 +18,7 @@ describe('API testing', async () => {
         //Verifying
         chai.expect(cardResponse.status).to.be.equal(201);
     });
+    
     it('Adding Empty Card via API ', async () => {
         //Registration via API
         const user = await RegistrationViaApi.registerAndReturnUser();

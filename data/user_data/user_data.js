@@ -7,6 +7,7 @@ export const ADDRESSES = {
         streetAddress: "Test Street 5a/15"
     }
 }
+
 export const CARD = {
     "monoBank": {
         fullName: "Test Person",
@@ -15,6 +16,7 @@ export const CARD = {
         expYear: "2030"
     }
 }
+
 export const DELIVERY = {
     oneDayDelivery: "1",
     fastDelivery: "2",

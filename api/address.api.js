@@ -12,7 +12,6 @@ class AddressViaApi {
             zipCode: address.zipCode,
             streetAddress: address.address
         });
-        return response;
     }
 
 } export default new AddressViaApi();

@@ -1,7 +1,7 @@
 import baseApi from "../base/base.api.js";
 
 class UserApi {
-    constructor() {}
+    constructor() { }
 
     async getMyself() {
         await allure.addStep(`GET whoami data`);
@@ -13,6 +13,4 @@ class UserApi {
         const userResponse = await this.getMyself();
         return JSON.parse(userResponse.text).user.id;
     }
-}
-
-export default new UserApi();
+} export default new UserApi();

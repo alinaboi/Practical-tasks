@@ -11,7 +11,6 @@ class CardApi {
             expMonth: cardData.expieryM,
             expYear: cardData.expieryY
         });
-        return response;
     }
 
 } export default new CardApi();
