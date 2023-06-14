@@ -15,3 +15,8 @@ export const CARD = {
         expYear: "2030"
     }
 }
+export const DELIVERY = {
+    oneDayDelivery: "1",
+    fastDelivery: "2",
+    standardDelivery: "3"
+}
