@@ -11,9 +11,9 @@ import OrderCompletionPage from "../../../pages/order-completion.page.js"
 import RegistrationViaApi from "../../../api/registration.api.js";
 
 describe('Full purchase flow testing ', async () => {
-    it('adding and removing items to the basket, completing purchase flow', async () => {
+    it('Adding and removing items to the basket, completing purchase flow', async () => {
         //Precondition -> Registration via API
-        const user = await RegistrationViaApi.registerAndReturnUser();
+        const user = await RegistrationViaApi.registerAndReturnUser(); //TODO : before
 
         await MainPage.open();
         await MainPage.waitForScreenToBeAvailable();
