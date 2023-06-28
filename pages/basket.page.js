@@ -9,6 +9,8 @@ const OPEN_SIDE_NAV_LOCATOR = 'button[aria-label="Open Sidenav"]';
 const FOOTER_LOCATOR = '.mat-paginator[role]';
 const BASKET_BTN_LOCATOR = '[aria-label="Show the shopping cart"]';
 const PRODUCT_TEXT_LOCATOR = (text) => `//mat-cell[contains(text(),${text})]`;
+const PRODUCT_STARTS_WITH_TEXT_LOCATOR = (text) => `//mat-cell[starts-with(text(),${text})])`;
+const REMOVE_BTN_LOCATOR = '/following-sibling::mat-cell[@class="mat-cell cdk-cell cdk-column-remove mat-column-remove ng-star-inserted"]';
 
 class BasketPage extends BasePage {
     constructor() {
@@ -42,48 +44,16 @@ class BasketPage extends BasePage {
         return new Button($(BASKET_BTN_LOCATOR), "Navigate to Basket")
     }
 
-    get appleJuiceText() {
-        return new Label($(PRODUCT_TEXT_LOCATOR("Apple Juice")), "Apple Juice Text");
+    async getProductByText(productText) {
+        return new Label($(PRODUCT_TEXT_LOCATOR(productText)), `${productText} Text`);
     }
 
-    get carrotJuiceText() {
-        return new Label($(PRODUCT_TEXT_LOCATOR("Carrot Juice")), "Carrot Juice Text");
-    }
-
-    get greenSmoothieText() {
-        return new Label($(PRODUCT_TEXT_LOCATOR("Green Smoothie")), "Green Smoothie Text");
-    }
-
-    get lemonJuiceText() {
-        return new Label($(PRODUCT_TEXT_LOCATOR("Lemon Juice")), "Lemon Juice Text");
-    }
-
-    get orangeJuiceText() {
-        return new Label($(PRODUCT_TEXT_LOCATOR("Orange Juice")), "Orange Juice Text");
-    }
-
-    get eggfruitJuiceText() {
-        return new Label($(PRODUCT_TEXT_LOCATOR(" Eggfruit Juice")), " Eggfruit Juice Text");
-    }
-
-    get salesmanArtworkText() {
-        return new Label($(PRODUCT_TEXT_LOCATOR("Salesman Artwork")), "Salesman Artwork Text");
-    }
-
-    get permafrost2020EditionText() {
-        return new Label($('//mat-cell[starts-with(text()," Juice Shop")])'), "Permafrost 2020 Edition Text");
-    }
-
-    get melonBikeText() {
-        return new Label($(PRODUCT_TEXT_LOCATOR("Melon Bike")), "Melon Bike Text");
+    async getProductByBegianningOfText(productText) {
+        return new Label($(PRODUCT_STARTS_WITH_TEXT_LOCATOR(productText)), `${productText} Text`);
     }
 
     get checkoutBtn() {
         return new Button($('(//button[@id="checkoutButton"]/*[1])'), "Checkout Button");
-    }
-    
-    async getRemoveBtn(product) {
-        return new Button($( product.wdioElement + '/following-sibling::mat-cell[@class="mat-cell cdk-cell cdk-column-remove mat-column-remove ng-star-inserted"]'), "Remove the ithem from Basket")
     }
 
     async open() {
@@ -104,6 +74,11 @@ class BasketPage extends BasePage {
     async openBasket() {
         await allure.addStep(`Click on the Basket Button`);
         await this.basketBtn.click();
+    }
+    
+    async clickRemoveByProductText(productText) {
+        let removeButton = new Button($(PRODUCT_TEXT_LOCATOR(productText) + REMOVE_BTN_LOCATOR), "Remove the ithem from Basket");
+        await removeButton.click();
     }
 
     async removeStrawberryJuice() { //TODO : remove by text
