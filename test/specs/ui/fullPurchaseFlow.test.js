@@ -11,20 +11,23 @@ import OrderCompletionPage from "../../../pages/order-completion.page.js"
 import RegistrationViaApi from "../../../api/registration.api.js";
 
 describe('Full purchase flow testing ', async () => {
-    it('Adding and removing items to the basket, completing purchase flow', async () => {
-        //Precondition -> Registration via API
-        const user = await RegistrationViaApi.registerAndReturnUser(); //TODO : before
+    let user;
 
+    before('Register user using API method', async () => {
+        //Precondition -> Registration via API
+        user = await RegistrationViaApi.registerAndReturnUser();
+    });
+
+    it('Adding and removing items to the basket, completing purchase flow', async () => {
         await MainPage.open();
         await MainPage.waitForScreenToBeAvailable();
         await MainPage.openAccountMenu();
-        await MainPage.loginBtn.wdioElement.waitForClickable({ timeout: 10000 });
         await MainPage.navigateToLogin();
         await LoginPage.waitForScreenToBeAvailable();
         await LoginPage.login(user.email, user.password);
 
-        //Search Page ->adding items
-        //await SearchPage.open();
+        //Search Page -> adding items
+        await SearchPage.open();
         await SearchPage.waitForScreenToBeAvailable();
 
         await SearchPage.changeIthemsQuantity("36");
