@@ -10,6 +10,8 @@ import OrderSummaryPage from "../../../pages/order-summary.page.js";
 import OrderCompletionPage from "../../../pages/order-completion.page.js";
 import RegistrationViaApi from "../../../api/registration.api.js";
 
+import { PRODUCTS } from "../../../data/product_data/products.js";
+
 describe("Full purchase flow testing ", async () => {
   let user;
 
@@ -31,21 +33,15 @@ describe("Full purchase flow testing ", async () => {
     await SearchPage.waitForScreenToBeAvailable();
 
     await SearchPage.changeIthemsQuantity("36");
-    await SearchPage.addAppleJuice();
-    await SearchPage.addApplePomace();
-    await SearchPage.addBananaJuice();
-    await SearchPage.addCarrotJuiceBtn.wdioElement.waitForClickable({
-      timeout: 10000,
-    });
-    await SearchPage.addCarrotJuice();
-    await SearchPage.addEggfruitJuice();
-    await SearchPage.addGreenSmoothieBtn.wdioElement.waitForClickable({
-      timeout: 10000,
-    });
-    await SearchPage.addGreenSmoothie();
-    await SearchPage.addLemonJuice();
-    await SearchPage.addOrangeJuice();
-    await SearchPage.addStrawberryJuice();
+    await SearchPage.clickAddToBasketByIndex(PRODUCTS.appleJuice.searchOrder);
+    await SearchPage.clickAddToBasketByIndex(PRODUCTS.applePomace.searchOrder);
+    await SearchPage.clickAddToBasketByIndex(PRODUCTS.bananaJuice.searchOrder);
+    await SearchPage.clickAddToBasketByIndex(PRODUCTS.carrotJuice.searchOrder);
+    await SearchPage.clickAddToBasketByIndex(PRODUCTS.eggfruitJuice.searchOrder);
+    await SearchPage.clickAddToBasketByIndex(PRODUCTS.greenSmoothie.searchOrder);
+    await SearchPage.clickAddToBasketByIndex(PRODUCTS.lemonJuice.searchOrder);
+    await SearchPage.clickAddToBasketByIndex(PRODUCTS.orangeJuice.searchOrder);
+    await SearchPage.clickAddToBasketByIndex(PRODUCTS.strawberryJuice.searchOrder);
     await SearchPage.openBasket();
 
     //Basket Page ->removing items, changing the quantity ->verify if the order correct

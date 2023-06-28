@@ -1,7 +1,9 @@
 import BasePage from "../base/base.page.js";
 import Button from "../elements/button.js";
 import Dropdown from "../elements/dropdown.js";
-import Label from "../elements/label.js";
+import Label from "../elements/label.js";\
+
+ADD_TO_BASKET_LOCATOR = (index = 1) => `(//button[@aria-label="Add to Basket"])[${index}]`;
 
 class SearchPage extends BasePage {
   constructor() {
@@ -33,60 +35,13 @@ class SearchPage extends BasePage {
     );
   }
 
-  //(//span[contains(text(),"Add to Basket")])
-  ////button[@class="mat-focus-indicator btn-basket mat-button mat-raised-button mat-button-base mat-primary ng-star-inserted"]
-  get addAppleJuiceBtn() {
-    return new Button(
-      $('(//button[@aria-label="Add to Basket"])[1]'),
-      "Add Apple Juice to Basket"
+  async clickAddToBasketByIndex(index = 1) {
+    let addButton = new Button(
+      $(ADD_TO_BASKET_LOCATOR(index)),
+      "Add the product to Basket"
     );
-  }
-
-  get addApplePomaceBtn() {
-    return new Button(
-      $('(//button[@aria-label="Add to Basket"])[2]'),
-      "Add Apple Pomace to Basket"
-    );
-  }
-
-  get addBananaJuiceBtn() {
-    return new Button($('(//button[@aria-label="Add to Basket"])[3]'), "");
-  }
-
-  get addCarrotJuiceBtn() {
-    return new Button($('(//button[@aria-label="Add to Basket"])[5]'), "");
-  }
-
-  get addEggfruitJuiceBtn() {
-    return new Button($('(//button[@aria-label="Add to Basket"])[6]'), "");
-  }
-
-  get addGreenSmoothieBtn() {
-    return new Button($('(//button[@aria-label="Add to Basket"])[8]'), "");
-  }
-
-  get addLemonJuiceBtn() {
-    return new Button($('(//button[@aria-label="Add to Basket"])[10]'), "");
-  }
-
-  get addOrangeJuiceBtn() {
-    return new Button($('(//button[@aria-label="Add to Basket"])[30]'), "");
-  }
-
-  get addSalesmanArtworkBtn() {
-    return new Button($('(//button[@aria-label="Add to Basket"])[4]'), "");
-  }
-
-  get addPermafrost2020EditionBtn() {
-    return new Button($('(//button[@aria-label="Add to Basket"])[9]'), "");
-  }
-
-  get addMelonBikeBtn() {
-    return new Button($('(//button[@aria-label="Add to Basket"])[11]'), "");
-  }
-
-  get addStrawberryJuiceBtn() {
-    return new Button($('(//button[@aria-label="Add to Basket"])[34]'), "");
+    await addButton.waitForClickable(10000);
+    await addButton.click();
   }
 
   get ithemsPerPageDropdown() {
