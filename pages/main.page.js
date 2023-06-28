@@ -100,6 +100,7 @@ class MainPage extends BasePage {
         await allure.addStep(`Click on Account Menu Button`);
         await this.accountMenuBtn.wdioElement.waitForClickable({ timeout: 10000 });
         await this.accountMenuBtn.click();
+        await this.loginBtn.waitForDisplayed();
     }
 
     async openSideNavMenu() {

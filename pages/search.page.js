@@ -79,7 +79,7 @@ class SearchPage extends BasePage {
     }
 
     get ithemsPerPageDropdown() {
-        return new Dropdown($("//div[starts-with(@class,'mat-select-value ng-tns-c131')]"), "Change the quantity of items on the page")
+        return new Dropdown($("//div[starts-with(@class,'mat-select-value')]"), "Change the quantity of items on the page")
     }
 
     get footer() {

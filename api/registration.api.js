@@ -13,6 +13,7 @@ class RegistrationViaApi {
             const email = await this.generateEmail(10);
             const response = await this.register(email, password);
             if (response.status === 201) {
+                console.info(`!! User  ${email} has been successfully created.`)
                 return new User(response.body.data.email, password);
             }
         }
