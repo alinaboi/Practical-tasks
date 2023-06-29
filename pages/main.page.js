@@ -115,7 +115,7 @@ class MainPage extends BasePage {
         await this.loginBtn.click();
     }
 
-    async ordersAndPayment() {
+    async navigateToOrdersAndPayment() {
         await allure.addStep(`Navigation to Orders and Payment sub-menu`);
         await this.ordersAndPaymentBtn.click();
     }

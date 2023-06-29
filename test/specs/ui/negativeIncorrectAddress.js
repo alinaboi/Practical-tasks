@@ -23,7 +23,7 @@ describe('Negative Address creation testing ', async () => {
         //Search Page ->Address Saved Page
         await MainPage.openAccountMenu();
         await expect(MainPage.loggedInAccountMenu.wdioElement).toBeDisplayed();
-        await MainPage.ordersAndPayment();
+        await MainPage.navigateToOrdersAndPayment();
         await MainPage.navigateToAddress();
 
         //Address Saved Page ->Address Create Page ->adding new address with wrong mobile number input

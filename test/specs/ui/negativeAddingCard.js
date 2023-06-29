@@ -19,7 +19,7 @@ describe('Negative Card creation testing ', async () => {
         //Search Page -> Address Saved Page
         await MainPage.openAccountMenu();
         await expect(MainPage.loggedInAccountMenu.wdioElement).toBeDisplayed();
-        await MainPage.ordersAndPayment();
+        await MainPage.navigateToOrdersAndPayment();
         await MainPage.navigateToPayment();
 
         //Payment Shop Page -> adding a card and selecting it

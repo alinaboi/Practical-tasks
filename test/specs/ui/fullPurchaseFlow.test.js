@@ -105,5 +105,5 @@ describe("Full purchase flow testing ", async () => {
     //Order Completion Page ->verify if the order is complete
     await OrderCompletionPage.waitForScreenToBeAvailable();
     await expect(OrderCompletionPage.thankYouMsg.wdioElement).toBeDisplayed();
-  });
+  }); //TODO : move verifications to PO files
 });
