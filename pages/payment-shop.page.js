@@ -127,21 +127,40 @@ class PaymentShopPage extends BasePage {
     await this.addNewCardBtn.click();
   }
 
+  async fillName(fullName) {
+    await this.personNameInput.wdioElement.waitForClickable();
+    await this.personNameInput.setValue(fullName);
+  }
+
+  async fillCardNumber(cardNum) {
+    await this.cardNumberInput.wdioElement.waitForClickable();
+    await this.cardNumberInput.setValue(cardNum);
+  }
+
+  async selectExpiryMonth(expMonth) {
+    await this.expiryMonthDropdown.wdioElement.waitForClickable();
+    await this.expiryMonthDropdown.selectNumber(expMonth);
+  }
+
+  async selectExpiryYear(expYear) {
+    await this.expiryYearDropdown.wdioElement.waitForClickable();
+    await this.expiryYearDropdown.selectNumber(expYear);
+  }
+
+  async clickSubmit() {
+    await this.submitBtn.wdioElement.waitForClickable();
+    await this.submitBtn.click();
+  }
+
   async fillCardFields(paymentMethod) {
     await allure.startStep(
       `Adding New Card : ${paymentMethod.fullName}/ ${paymentMethod.cardNum}/ ${paymentMethod.expMonth}/ ${paymentMethod.expYear}`
     );
-    await this.personNameInput.setValue(paymentMethod.fullName);
-    await this.cardNumberInput.setValue(paymentMethod.cardNum);
-    await this.expiryMonthDropdown.wdioElement.waitForClickable({
-      timeout: 10000,
-    });
-    await this.expiryMonthDropdown.selectNumber(paymentMethod.expMonth);
-    await this.expiryYearDropdown.selectNumber(paymentMethod.expYear);
-    await this.submitBtn.wdioElement.waitForClickable({
-      timeout: 10000,
-    });
-    await this.submitBtn.click();
+    await this.fillName(paymentMethod.fullName);
+    await this.fillCardNumber(paymentMethod.cardNum);
+    await this.selectExpiryMonth(paymentMethod.expMonth);
+    await this.selectExpiryYear(paymentMethod.expYear);
+    await this.clickSubmit();
     await allure.endStep(`passed`);
   }
 
