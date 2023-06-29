@@ -12,6 +12,8 @@ import RegistrationViaApi from "../../../api/registration.api.js";
 
 import { PRODUCTS } from "../../../data/product_data/products.js";
 
+import { data } from "../../../data/test_data/00001_data.js";
+
 describe("Full purchase flow testing ", async () => {
   let user;
 
@@ -37,11 +39,17 @@ describe("Full purchase flow testing ", async () => {
     await SearchPage.clickAddToBasketByIndex(PRODUCTS.applePomace.searchOrder);
     await SearchPage.clickAddToBasketByIndex(PRODUCTS.bananaJuice.searchOrder);
     await SearchPage.clickAddToBasketByIndex(PRODUCTS.carrotJuice.searchOrder);
-    await SearchPage.clickAddToBasketByIndex(PRODUCTS.eggfruitJuice.searchOrder);
-    await SearchPage.clickAddToBasketByIndex(PRODUCTS.greenSmoothie.searchOrder);
+    await SearchPage.clickAddToBasketByIndex(
+      PRODUCTS.eggfruitJuice.searchOrder
+    );
+    await SearchPage.clickAddToBasketByIndex(
+      PRODUCTS.greenSmoothie.searchOrder
+    );
     await SearchPage.clickAddToBasketByIndex(PRODUCTS.lemonJuice.searchOrder);
     await SearchPage.clickAddToBasketByIndex(PRODUCTS.orangeJuice.searchOrder);
-    await SearchPage.clickAddToBasketByIndex(PRODUCTS.strawberryJuice.searchOrder);
+    await SearchPage.clickAddToBasketByIndex(
+      PRODUCTS.strawberryJuice.searchOrder
+    );
     await SearchPage.openBasket();
 
     //Basket Page ->removing items, changing the quantity ->verify if the order correct
@@ -64,15 +72,7 @@ describe("Full purchase flow testing ", async () => {
     await AddressSelectPage.waitForScreenToBeAvailable();
     await AddressSelectPage.clickAddNewAddress();
     await AddressCreatePage.waitForScreenToBeAvailable();
-    await AddressCreatePage.fillAddressFields(
-      "Ukraine",
-      "Test User",
-      "0633330000",
-      "79000",
-      "Rynok Square, 1",
-      "Lviv",
-      "Lvivs'ka"
-    );
+    await AddressCreatePage.fillAddressFields(data.address);
     await AddressCreatePage.submit();
     await AddressSelectPage.waitForScreenToBeAvailable();
     await AddressSelectPage.clickSelectTheAddress();

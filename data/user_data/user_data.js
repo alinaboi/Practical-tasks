@@ -4,7 +4,9 @@ export const ADDRESSES = {
         fullName: "Test Person",
         mobileNum: "3801122233",
         zipCode: "12345",
-        streetAddress: "Test Street 5a/15"
+        streetAddress: "Test Street 5a/15", 
+        city: "Lviv",
+        state: "Lvivs'ka"
     }
 }
 
