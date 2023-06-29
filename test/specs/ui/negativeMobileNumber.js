@@ -26,7 +26,7 @@ describe('Negative Address creation testing ', async () => {
 
         //Address Saved Page ->Address Create Page ->adding new address with wrong mobile number input
         await AddressSavedPage.waitForScreenToBeAvailable();
-        await AddressSavedPage.addNewAddress();
+        await AddressSavedPage.clickAddNewAddress();
         await AddressCreatePage.waitForScreenToBeAvailable();
         await AddressCreatePage.fillAddressFields("Ukraine", "Test User", "063,3330", "79000", "Rynok Square, 1", "Lviv", "Lvivs'ka");
         await addressCreatePage.submit();

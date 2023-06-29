@@ -41,18 +41,18 @@ describe('Buying the last item flow testing ', async () => {
 
         //Address Select Page -> adding an address and selecting it
         await AddressSelectPage.waitForScreenToBeAvailable();
-        await AddressSelectPage.addNewAddress();
+        await AddressSelectPage.clickAddNewAddress();
         await AddressCreatePage.waitForScreenToBeAvailable();
         await AddressCreatePage.fillAddressFields("Ukraine", "Test User", "0633330000", "79000", "Rynok Square, 1", "Lviv", "Lvivs'ka");
         await AddressCreatePage.submit();
         await AddressSelectPage.waitForScreenToBeAvailable();
-        await AddressSelectPage.selectTheAddress();
-        await AddressSelectPage.continue();
+        await AddressSelectPage.clickSelectTheAddress();
+        await AddressSelectPage.clickContinue();
 
         //Delivery Method Page ->
         await DeliveryMethodPage.waitForScreenToBeAvailable();
         await DeliveryMethodPage.standardDelivery();
-        await DeliveryMethodPage.continue();
+        await DeliveryMethodPage.clickContinue();
 
         //Payment Shop Page -> adding a card and selecting it
         await PaymentShopPage.waitForScreenToBeAvailable();
@@ -60,7 +60,7 @@ describe('Buying the last item flow testing ', async () => {
         await PaymentShopPage.waitForScreenToBeAvailable();
         await PaymentShopPage.fillCardFields("Test User", "4953011022334455", "1", "2099");
         await PaymentShopPage.selectTheCard();
-        await PaymentShopPage.continue();
+        await PaymentShopPage.clickContinue();
 
         //Order-Summary Page -> verify if the order and customer's data correct
         await OrderSummaryPage.waitForScreenToBeAvailable();

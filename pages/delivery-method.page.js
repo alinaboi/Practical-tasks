@@ -53,7 +53,7 @@ class DeliveryMethodPage extends BasePage {
         await this.standardDeliveryBtn.waitForDisplayed();
         await this.standardDeliveryBtn.click();
     }
-    async continue() {
+    async clickContinue() {
         await allure.addStep(`Click on Continue Button`);
         await this.continueBtn.click();
     }

@@ -68,7 +68,7 @@ class AddressSavedPage extends BasePage {
         await this.accountMenuBtn.waitForDisplayed();
         await this.sideNavMenuBtn.waitForDisplayed();
     }
-    async addNewAddress() {
+    async clickAddNewAddress() {
         await allure.addStep(`Click on Add New Address`);
         await this.addNewAddressBtn.click();
     }
@@ -88,11 +88,11 @@ class AddressSavedPage extends BasePage {
         await allure.endStep(`passed`);
 
     }
-    async selectTheAddress() {
+    async clickSelectTheAddress() {
         await allure.addStep(`Click on User's Address`);
         await this.selectTheAddressBtn.click();
     }
-    async continue() {
+    async clickContinue() {
         await allure.addStep(`Click on Continue Button`);
         await this.continueBtn.click();
     }

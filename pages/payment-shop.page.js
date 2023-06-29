@@ -115,7 +115,7 @@ class PaymentShopPage extends BasePage {
         await this.selectTheCardBtn.click();
     }
 
-    async continue() {
+    async clickContinue() {
         await allure.addStep(`Click on Continue Button`);
         await this.continueBtn.wdioElement.waitForClickable({
             timeout: 10000
