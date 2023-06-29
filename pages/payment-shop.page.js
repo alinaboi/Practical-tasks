@@ -110,10 +110,10 @@ class PaymentShopPage extends BasePage {
   async open() {
     await allure.startStep(`Navigation to the Search Page`);
     await super.open(`${global.baseUrl}#/delivery-method`);
-    /*if (await this.closePopupBtn.isExisting())
-            await this.closePopupBtn.click();
-        if (await this.closeCookieBtn.isExisting())
-            await this.closeCookieBtn.click();*/
+    if (await this.closePopupBtn.wdioElement.isDisplayed())
+      await this.closePopupBtn.click();
+    if (await this.closeCookieBtn.wdioElement.isDisplayed())
+      await this.closeCookieBtn.click();
     await allure.endStep(`passed`);
   }
 
@@ -127,17 +127,17 @@ class PaymentShopPage extends BasePage {
     await this.addNewCardBtn.click();
   }
 
-  async fillCardFields(personName, cardNumber, expiryMonth, expiryYear) {
+  async fillCardFields(paymentMethod) {
     await allure.startStep(
-      `Adding New Card : ${personName}/ ${cardNumber}/ ${expiryMonth}/ ${expiryYear}`
+      `Adding New Card : ${paymentMethod.fullName}/ ${paymentMethod.cardNum}/ ${paymentMethod.expMonth}/ ${paymentMethod.expYear}`
     );
-    await this.personNameInput.setValue(personName);
-    await this.cardNumberInput.setValue(cardNumber);
+    await this.personNameInput.setValue(paymentMethod.fullName);
+    await this.cardNumberInput.setValue(paymentMethod.cardNum);
     await this.expiryMonthDropdown.wdioElement.waitForClickable({
       timeout: 10000,
     });
-    await this.expiryMonthDropdown.selectNumber(expiryMonth);
-    await this.expiryYearDropdown.selectNumber(expiryYear);
+    await this.expiryMonthDropdown.selectNumber(paymentMethod.expMonth);
+    await this.expiryYearDropdown.selectNumber(paymentMethod.expYear);
     await this.submitBtn.wdioElement.waitForClickable({
       timeout: 10000,
     });

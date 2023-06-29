@@ -87,12 +87,7 @@ describe("Full purchase flow testing ", async () => {
     await PaymentShopPage.waitForScreenToBeAvailable();
     await PaymentShopPage.clickAddNewCard();
     await PaymentShopPage.waitForScreenToBeAvailable();
-    await PaymentShopPage.fillCardFields(
-      "Test User",
-      "4953011022334455",
-      "1",
-      "2099"
-    );
+    await PaymentShopPage.fillCardFields(data.paymentMethod);
     await PaymentShopPage.selectTheCard();
     await PaymentShopPage.clickContinue();
 

@@ -38,10 +38,10 @@ class DeliveryMethodPage extends BasePage {
     async open() {
         await allure.startStep(`Navigation to the Search Page`);
         await super.open(`${global.baseUrl}#/delivery-method`);
-        /*if (await this.closePopupBtn.isExisting())
+        if (await this.closePopupBtn.wdioElement.isDisplayed())
             await this.closePopupBtn.click();
-        if (await this.closeCookieBtn.isExisting())
-            await this.closeCookieBtn.click();*/
+        if (await this.closeCookieBtn.wdioElement.isDisplayed())
+            await this.closeCookieBtn.click();
         await allure.endStep(`passed`);
     }
     async waitForScreenToBeAvailable() {
