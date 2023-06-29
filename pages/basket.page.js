@@ -44,16 +44,16 @@ class BasketPage extends BasePage {
         return new Button($(BASKET_BTN_LOCATOR), "Navigate to Basket")
     }
 
+    get checkoutBtn() {
+        return new Button($('(//button[@id="checkoutButton"]/*[1])'), "Checkout Button");
+    }
+
     async getProductByText(productText) {
         return new Label($(PRODUCT_TEXT_LOCATOR(productText)), `${productText} Text`);
     }
 
     async getProductByBegianningOfText(productText) {
         return new Label($(PRODUCT_STARTS_WITH_TEXT_LOCATOR(productText)), `${productText} Text`);
-    }
-
-    get checkoutBtn() {
-        return new Button($('(//button[@id="checkoutButton"]/*[1])'), "Checkout Button");
     }
 
     async open() {
@@ -81,27 +81,7 @@ class BasketPage extends BasePage {
         await removeButton.click();
     }
 
-    async removeStrawberryJuice() { //TODO : remove by text
-        await allure.addStep(`Click on Remove the item from Basket Button`);
-        await this.removeStrawberryJuiceBtn.click();
-    }
-
-    async removeApplePomace() {
-        await allure.addStep(`Click on Remove the item from Basket Button`);
-        await this.removeApplePomaceBtn.click();
-    }
-
-    async removeBananaJuice() {
-        await allure.addStep(`Click on Remove the item from Basket Button`);
-        await this.removeBananaJuiceBtn.click();
-    }
-
-    async removeEggfruitJuice() {
-        await allure.addStep(`Click on Remove the item from Basket Button`);
-        await this.getRemoveBtn(this.eggfruitJuiceText()).click();
-    }
-
-    async checkout() {
+    async clickCheckout() {
         await allure.addStep(`Click on Checkout Button`);
         await this.checkoutBtn.wdioElement.waitForClickable({ timeout: 10000 })
         await this.checkoutBtn.click();
