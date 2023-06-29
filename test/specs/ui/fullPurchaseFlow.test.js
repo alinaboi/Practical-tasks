@@ -54,9 +54,6 @@ describe("Full purchase flow testing ", async () => {
 
     //Basket Page ->removing items, changing the quantity ->verify if the order correct
     await BasketPage.waitForScreenToBeAvailable();
-    await BasketPage.removeStrawberryJuiceBtn.wdioElement.waitForClickable({
-      timeout: 10000,
-    });
     await BasketPage.clickRemoveByProductText(PRODUCTS.strawberryJuice.text);
     await BasketPage.clickRemoveByProductText(PRODUCTS.applePomace.text);
     await BasketPage.clickRemoveByProductText(PRODUCTS.bananaJuice.text);
@@ -75,7 +72,7 @@ describe("Full purchase flow testing ", async () => {
     await AddressCreatePage.fillAddressFields(data.address);
     await AddressCreatePage.clickSubmit();
     await AddressSelectPage.waitForScreenToBeAvailable();
-    await AddressSelectPage.clickSelectTheAddress();
+    await AddressSelectPage.clickSelectTheAddress(data.address.fullName);
     await AddressSelectPage.clickContinue();
 
     //Delivery Method Page ->
@@ -101,7 +98,7 @@ describe("Full purchase flow testing ", async () => {
     await expect(OrderSummaryPage.lemonJuiceText.wdioElement).toBeDisplayed();
     await expect(OrderSummaryPage.orangeJuiceText.wdioElement).toBeDisplayed();
     await expect(
-      OrderSummaryPage.customerPhoneNumber.wdioElement
+      await await (await OrderSummaryPage.getCustomerPhoneNumber(data.address.mobileNum)).wdioElement
     ).toBeDisplayed();
     await OrderSummaryPage.submitOrder();
 

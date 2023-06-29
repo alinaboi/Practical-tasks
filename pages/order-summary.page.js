@@ -99,9 +99,9 @@ class OrderSummaryPage extends BasePage {
     );
   }
 
-  get customerPhoneNumber() {
+  async getCustomerPhoneNumber(mobileNum) {
     return new Label(
-      $('(//div[contains(text()," 633330000")])'),
+      $(`(//div[contains(text(),"${mobileNum}")])`),
       "Customer's Phone Number"
     );
   }

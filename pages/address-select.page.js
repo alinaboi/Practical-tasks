@@ -38,8 +38,8 @@ class AddressSelectPage extends BasePage {
         return new Button($('(//button[@aria-label="Add a new address"])'), "Add New Address")
     }
 
-    get selectTheAddressBtn() {
-        return new Button($('(//mat-cell[contains(text(),"Test User")])'), "Select User's Address")
+    async getSelectTheAddressBtn(userName) {
+        return new Button($(`(//mat-cell[contains(text(),"${userName}")])`), "Select User's Address")
     }
 
     get continueBtn() {
@@ -67,9 +67,9 @@ class AddressSelectPage extends BasePage {
         await this.addNewAddressBtn.click();
     }
 
-    async clickSelectTheAddress() {
+    async clickSelectTheAddress(userName) {
         await allure.addStep(`Click on User's Address`);
-        await this.selectTheAddressBtn.click();
+        await (await this.getSelectTheAddressBtn(userName)).click();
     }
 
     async clickContinue() {

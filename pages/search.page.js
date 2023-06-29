@@ -1,9 +1,9 @@
 import BasePage from "../base/base.page.js";
 import Button from "../elements/button.js";
 import Dropdown from "../elements/dropdown.js";
-import Label from "../elements/label.js";\
+import Label from "../elements/label.js";
 
-ADD_TO_BASKET_LOCATOR = (index = 1) => `(//button[@aria-label="Add to Basket"])[${index}]`;
+const ADD_TO_BASKET_LOCATOR = (index = 1) => `(//button[@aria-label="Add to Basket"])[${index}]`;
 
 class SearchPage extends BasePage {
   constructor() {
@@ -40,7 +40,7 @@ class SearchPage extends BasePage {
       $(ADD_TO_BASKET_LOCATOR(index)),
       "Add the product to Basket"
     );
-    await addButton.waitForClickable(10000);
+    await addButton.wdioElement.waitForClickable(10000);
     await addButton.click();
   }
 
@@ -98,7 +98,7 @@ class SearchPage extends BasePage {
     await this.accountMenuBtn.waitForDisplayed();
     await this.sideNavMenuBtn.waitForDisplayed();
     await this.footer.waitForDisplayed();
-    await this.addMelonBikeBtn.waitForDisplayed();
+    //await this.addMelonBikeBtn.waitForDisplayed();
   }
 
   async changeIthemsQuantity(text) {

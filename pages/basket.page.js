@@ -8,7 +8,7 @@ const CLOSE_COOKIE_LOCATOR = ".cc-btn";
 const OPEN_SIDE_NAV_LOCATOR = 'button[aria-label="Open Sidenav"]';
 const FOOTER_LOCATOR = ".mat-paginator[role]";
 const BASKET_BTN_LOCATOR = '[aria-label="Show the shopping cart"]';
-const PRODUCT_TEXT_LOCATOR = (text) => `//mat-cell[contains(text(),${text})]`;
+const PRODUCT_TEXT_LOCATOR = (text) => `//mat-cell[contains(text(),"${text}")]`;
 const PRODUCT_STARTS_WITH_TEXT_LOCATOR = (text) =>
   `//mat-cell[starts-with(text(),${text})])`;
 const REMOVE_BTN_LOCATOR =

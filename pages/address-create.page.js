@@ -159,13 +159,13 @@ class AddressCreatePage extends BasePage {
 
   async fillAddressFields(address) {
     await allure.startStep(
-      `Adding New Address : ${address.country}/ ${address.personName}/ ${address.mobileNum}/ ${address.zipCode}/ ${address.address}/ ${address.city}/ ${address.state}`
+      `Adding New Address : ${address.country}/ ${address.fullName}/ ${address.mobileNum}/ ${address.zipCode}/ ${address.streetAddress}/ ${address.city}/ ${address.state}`
     );
     await this.contryInput.setValue(address.country);
-    await this.nameInput.setValue(address.personName);
+    await this.nameInput.setValue(address.fullName);
     await this.mobileNumberInput.setValue(address.mobileNum);
     await this.zipCodeInput.setValue(address.zipCode);
-    await this.addressInput.setValue(address.address);
+    await this.addressInput.setValue(address.streetAddress);
     await this.cityInput.setValue(address.city);
     await allure.endStep(`passed`);
   }
