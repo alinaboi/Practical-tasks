@@ -77,7 +77,7 @@ class SavedPaymentMethodsPage extends BasePage {
         await this.sideNavMenuBtn.waitForDisplayed();
     }
 
-    async addNewCard() {
+    async clickAddNewCard() {
         await allure.addStep(`Click on Add New Card Button`);
         await this.addNewCardBtn.click();
     }

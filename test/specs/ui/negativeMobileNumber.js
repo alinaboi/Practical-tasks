@@ -29,7 +29,7 @@ describe('Negative Address creation testing ', async () => {
         await AddressSavedPage.clickAddNewAddress();
         await AddressCreatePage.waitForScreenToBeAvailable();
         await AddressCreatePage.fillAddressFields("Ukraine", "Test User", "063,3330", "79000", "Rynok Square, 1", "Lviv", "Lvivs'ka");
-        await addressCreatePage.submit();
+        await addressCreatePage.clickSubmit();
 
         //verify if Error message displayed
         await expect(addressCreatePage.invalidMobileNumberMsg.wdioElement).toBeDisplayed();

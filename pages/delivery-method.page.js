@@ -48,7 +48,7 @@ class DeliveryMethodPage extends BasePage {
         await this.accountMenuBtn.waitForDisplayed();
         await this.sideNavMenuBtn.waitForDisplayed();
     }
-    async standardDelivery() {
+    async selectStandardDelivery() {
         await allure.addStep(`Click on Standard Delivery`);
         await this.standardDeliveryBtn.waitForDisplayed();
         await this.standardDeliveryBtn.click();

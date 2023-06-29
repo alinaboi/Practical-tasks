@@ -73,19 +73,19 @@ describe("Full purchase flow testing ", async () => {
     await AddressSelectPage.clickAddNewAddress();
     await AddressCreatePage.waitForScreenToBeAvailable();
     await AddressCreatePage.fillAddressFields(data.address);
-    await AddressCreatePage.submit();
+    await AddressCreatePage.clickSubmit();
     await AddressSelectPage.waitForScreenToBeAvailable();
     await AddressSelectPage.clickSelectTheAddress();
     await AddressSelectPage.clickContinue();
 
     //Delivery Method Page ->
     await DeliveryMethodPage.waitForScreenToBeAvailable();
-    await DeliveryMethodPage.standardDelivery();
+    await DeliveryMethodPage.selectStandardDelivery();
     await DeliveryMethodPage.clickContinue();
 
     //Payment Shop Page ->adding a card and selecting it
     await PaymentShopPage.waitForScreenToBeAvailable();
-    await PaymentShopPage.addNewCard();
+    await PaymentShopPage.clickAddNewCard();
     await PaymentShopPage.waitForScreenToBeAvailable();
     await PaymentShopPage.fillCardFields(
       "Test User",

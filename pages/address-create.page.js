@@ -169,8 +169,8 @@ class AddressCreatePage extends BasePage {
     await this.cityInput.setValue(address.city);
     await allure.endStep(`passed`);
   }
-  
-  async submit() {
+
+  async clickSubmit() {
     await allure.addStep("Click on Submit Button");
     await this.submitBtn.wdioElement.waitForClickable({ timeout: 10000 });
     await this.submitBtn.click();

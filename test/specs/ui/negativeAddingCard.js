@@ -24,7 +24,7 @@ describe('Negative Card creation testing ', async () => {
 
         //Payment Shop Page -> adding a card and selecting it
         await SavedPaymentMethodsPage.waitForScreenToBeAvailable();
-        await SavedPaymentMethodsPage.addNewCard();
+        await SavedPaymentMethodsPage.clickAddNewCard();
         await SavedPaymentMethodsPage.waitForScreenToBeAvailable();
         await SavedPaymentMethodsPage.fillCardFields("Test User", "E", "1", "2080");
 
