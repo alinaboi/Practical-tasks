@@ -49,16 +49,16 @@ describe("Full purchase flow testing ", async () => {
     await BasketPage.removeStrawberryJuiceBtn.wdioElement.waitForClickable({
       timeout: 10000,
     });
-    await BasketPage.removeStrawberryJuice();
-    await BasketPage.removeApplePomace();
-    await BasketPage.removeBananaJuice();
-    await BasketPage.removeEggfruitJuice();
+    await BasketPage.clickRemoveByProductText(PRODUCTS.strawberryJuice.text);
+    await BasketPage.clickRemoveByProductText(PRODUCTS.applePomace.text);
+    await BasketPage.clickRemoveByProductText(PRODUCTS.bananaJuice.text);
+    await BasketPage.clickRemoveByProductText(PRODUCTS.eggfruitJuice.text);
     // await expect(BasketPage.appleJuiceText.wdioElement).toBeDisplayed();
     // await expect(BasketPage.carrotJuiceText.wdioElement).toBeDisplayed();
     // await expect(BasketPage.greenSmoothieText.wdioElement).toBeDisplayed();
     // await expect(BasketPage.lemonJuiceText.wdioElement).toBeDisplayed();
     // await expect(BasketPage.orangeJuiceText.wdioElement).toBeDisplayed();
-    await BasketPage.checkout();
+    await BasketPage.clickCheckout();
 
     //Address Select Page ->adding an address and selecting it
     await AddressSelectPage.waitForScreenToBeAvailable();
