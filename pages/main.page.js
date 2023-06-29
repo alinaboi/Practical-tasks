@@ -1,7 +1,9 @@
 import BasePage from "../base/base.page.js";
 import Button from "../elements/button.js";
+import Label from "../elements/label.js";
 
 const ACCOUNT_MENU_BUTTON_LOCATOR = '#navbarAccount';
+const ACCOUNT_MENU_CONTAINER_LOCATOR ='div.mat-menu-content';
 const LOGIN_BUTTON_LOCATOR = 'button[routerlink="/login"]';
 const CLOSE_POP_UP_BUTTON_LOCATOR = 'button.close-dialog';
 const CLOSE_COOKIE_BUTTON_LOCATOR = '.cc-btn';
@@ -28,6 +30,10 @@ class MainPage extends BasePage {
     //getters    
     get accountMenuBtn() {
         return new Button($(ACCOUNT_MENU_BUTTON_LOCATOR), "Account Menu");
+    }
+
+    get accountMenuContainer() {
+        return new Label($(ACCOUNT_MENU_CONTAINER_LOCATOR), "Account Menu background layer (Container)");
     }
 
     get loginBtn() {
@@ -100,7 +106,7 @@ class MainPage extends BasePage {
         await allure.addStep(`Click on Account Menu Button`);
         await this.accountMenuBtn.wdioElement.waitForClickable({ timeout: 10000 });
         await this.accountMenuBtn.click();
-        await this.loginBtn.waitForDisplayed();
+        await this.accountMenuContainer.waitForDisplayed();
     }
 
     async openSideNavMenu() {

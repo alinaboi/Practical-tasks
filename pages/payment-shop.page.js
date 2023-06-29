@@ -66,6 +66,12 @@ class PaymentShopPage extends BasePage {
       "Card number is not valid or empty Massege."
     );
   }
+  get wrongCardNumberLengthMsg() {
+    return new Label(
+      $('//mat-error[contains(text(),"Please enter a valid sixteen digit card number.")]'),
+      "Card number is not valid (too short or too long) Massege."
+    );
+  }
 
   get expiryMonthDropdown() {
     return new Dropdown(
