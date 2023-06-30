@@ -1,8 +1,8 @@
 
-import RegistrationPage from "../../pages/registration.page.js";
+import RegistrationPage from "../../../pages/registration.page.js";
 
-describe ('Negative registration testing', () => {
-    it ('registration with empty password test', async () => {
+describe('Negative registration testing', () => {
+    it('registration with empty password test', async () => {
 
         //Registration Page
         await RegistrationPage.open();

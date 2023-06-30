@@ -3,7 +3,6 @@ import Button from "../elements/button.js";
 import Input from "../elements/input.js";
 import Label from "../elements/label.js";
 
-
 class ProfilePage extends BasePage {
     constructor() {
         super();
@@ -32,16 +31,20 @@ class ProfilePage extends BasePage {
     get uploadPicBtn() {
         return new Button($('//button[@aria-label="Button to upload the profile picture"]'), "Save changes");
     }
+
     get pictureElement() {
         return $('.img-rounded');
     }
+    
     get userNameInput() {
         return new Input($('//input[@id="username"]'), "User Name Input");
     }
+
     get setUsernameBtn() {
         return new Button($('//button[@aria-label="Button to save/set the username"]'), "Save User Name Changes");
     }
 
+    //action methods
     async open() {
         await allure.startStep(`Navigation to the Profile Page`);
         await super.open(`${global.baseUrl}#/profile`);
@@ -56,6 +59,7 @@ class ProfilePage extends BasePage {
         await this.backBtn.waitForDisplayed();
         await this.uploadPicBtn.waitForDisplayed();
     }
+
     async setUsernameAndVerify(text) {
         await allure.startStep(`Updating Username`);
         await this.userNameInput.setValue(text);
@@ -63,7 +67,6 @@ class ProfilePage extends BasePage {
         await new Label($(`//p[contains(text(),"${text}")]`), "User Name Signature").waitForDisplayed();
         await allure.endStep(`passed`);
     }
-
 }
 
 export default new ProfilePage();

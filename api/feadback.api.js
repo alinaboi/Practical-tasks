@@ -14,6 +14,4 @@ class FeadbackViaApi {
         });
     }
 
-}
-
-export default new FeadbackViaApi();
+} export default new FeadbackViaApi();

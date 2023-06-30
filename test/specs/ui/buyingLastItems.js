@@ -1,14 +1,14 @@
-import LoginPage from "../../pages/login.page.js"
-import MainPage from "../../pages/main.page.js"
-import SearchPage from "../../pages/search.page.js"
-import BasketPage from "../../pages/basket.page.js"
-import AddressSelectPage from "../../pages/address-select.page.js"
-import AddressCreatePage from "../../pages/address-create.page.js"
-import DeliveryMethodPage from "../../pages/delivery-method.page.js"
-import PaymentShopPage from "../../pages/payment-shop.page.js"
-import OrderSummaryPage from "../../pages/order-summary.page.js"
-import OrderCompletionPage from "../../pages/order-completion.page.js"
-import RegistrationViaApi from "../../api/registration.api.js";
+import LoginPage from "../../../pages/login.page.js"
+import MainPage from "../../../pages/main.page.js"
+import SearchPage from "../../../pages/search.page.js"
+import BasketPage from "../../../pages/basket.page.js"
+import AddressSelectPage from "../../../pages/address-select.page.js"
+import AddressCreatePage from "../../../pages/address-create.page.js"
+import DeliveryMethodPage from "../../../pages/delivery-method.page.js"
+import PaymentShopPage from "../../../pages/payment-shop.page.js"
+import OrderSummaryPage from "../../../pages/order-summary.page.js"
+import OrderCompletionPage from "../../../pages/order-completion.page.js"
+import RegistrationViaApi from "../../../api/registration.api.js";
 import chai from "chai";
 
 describe('Buying the last item flow testing ', async () => {
@@ -19,7 +19,7 @@ describe('Buying the last item flow testing ', async () => {
         await MainPage.open();
         await MainPage.waitForScreenToBeAvailable();
         await MainPage.openAccountMenu();
-        await MainPage.loginBtn.wdioElement.waitForClickable({timeout: 10000});
+        await MainPage.loginBtn.wdioElement.waitForClickable({ timeout: 10000 });
         await MainPage.navigateToLogin();
         await LoginPage.waitForScreenToBeAvailable();
         await LoginPage.login(user.email, user.password);
@@ -36,33 +36,31 @@ describe('Buying the last item flow testing ', async () => {
         await BasketPage.waitForScreenToBeAvailable();
         await expect(BasketPage.salesmanArtworkText.wdioElement).toBeDisplayed();
         await expect(BasketPage.permafrost2020EditionText.wdioElement).toBeDisplayed();
-        await BasketPage.checkoutBtn.wdioElement.waitForClickable({timeout: 10000});
+        await BasketPage.checkoutBtn.wdioElement.waitForClickable({ timeout: 10000 });
         await BasketPage.checkout();
 
         //Address Select Page -> adding an address and selecting it
         await AddressSelectPage.waitForScreenToBeAvailable();
-        await AddressSelectPage.addNewAddress();
+        await AddressSelectPage.clickAddNewAddress();
         await AddressCreatePage.waitForScreenToBeAvailable();
         await AddressCreatePage.fillAddressFields("Ukraine", "Test User", "0633330000", "79000", "Rynok Square, 1", "Lviv", "Lvivs'ka");
-        await AddressCreatePage.submit();
+        await AddressCreatePage.clickSubmit();
         await AddressSelectPage.waitForScreenToBeAvailable();
-        await AddressSelectPage.selectTheAddress();
-        await AddressSelectPage.continue();
-
+        await AddressSelectPage.clickSelectTheAddress();
+        await AddressSelectPage.clickContinue();
 
         //Delivery Method Page ->
         await DeliveryMethodPage.waitForScreenToBeAvailable();
-        await DeliveryMethodPage.standardDelivery();
-        await DeliveryMethodPage.continue();
+        await DeliveryMethodPage.selectStandardDelivery();
+        await DeliveryMethodPage.clickContinue();
 
         //Payment Shop Page -> adding a card and selecting it
         await PaymentShopPage.waitForScreenToBeAvailable();
-        await PaymentShopPage.addNewCard();
+        await PaymentShopPage.clickAddNewCard();
         await PaymentShopPage.waitForScreenToBeAvailable();
         await PaymentShopPage.fillCardFields("Test User", "4953011022334455", "1", "2099");
         await PaymentShopPage.selectTheCard();
-        await PaymentShopPage.continue();
-
+        await PaymentShopPage.clickContinue();
 
         //Order-Summary Page -> verify if the order and customer's data correct
         await OrderSummaryPage.waitForScreenToBeAvailable();

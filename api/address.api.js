@@ -3,18 +3,15 @@ import baseApi from "../base/base.api.js";
 class AddressViaApi {
     constructor() {}
 
-    async addAddress(contry, personName, mobileNum, zipCode, address) {
+    async addAddress(address) {
         await allure.addStep(`POST Address`);
         return await baseApi.post("api/Addresss/", {
-            country: contry,
-            fullName: personName,
-            mobileNum: mobileNum,
-            zipCode: zipCode,
-            streetAddress: address,
+            country: address.country,
+            fullName: address.personName,
+            mobileNum: address.mobileNum,
+            zipCode: address.zipCode,
+            streetAddress: address.address
         });
-        
     }
 
-}
-
-export default new AddressViaApi();
+} export default new AddressViaApi();

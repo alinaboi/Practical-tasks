@@ -1,6 +1,7 @@
 import baseApi from "../base/base.api.js";
 
 class LoginViaApi {
+
     constructor() {
         this.token = '';
     }
@@ -24,6 +25,4 @@ class LoginViaApi {
             "password": password
         });
     }
-}
-
-export default new LoginViaApi();
+} export default new LoginViaApi();

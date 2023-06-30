@@ -72,16 +72,16 @@ exports.config = {
 
     capabilities: [
         {
-        maxInstances: 1,
-        browserName: 'chrome',
-        acceptInsecureCerts: true
-    },
-    {
-        maxInstances: 1,
-        browserName: 'firefox',
-        acceptInsecureCerts: true
-    }
-],
+            maxInstances: 1,
+            browserName: 'chrome',
+            acceptInsecureCerts: true
+        },
+        // {
+        //     maxInstances: 1,
+        //     browserName: 'firefox',
+        //     acceptInsecureCerts: true
+        // }
+    ],
     logLevel: 'info',
     bail: 0,
     before() {
@@ -105,7 +105,7 @@ exports.config = {
             let screen = await browser.takeScreenshot();
             await allureReporter.addAttachment("MyScreenShot", Buffer.from(screen, "base64"), "image/png");
         }
-        console.log(`Test ${test.title} is ${passed ?'passed':'not passed'}. Number of retries: ${JSON.stringify(retries.attempts)}`);
+        console.log(`Test ${test.title} is ${passed ? 'passed' : 'not passed'}. Number of retries: ${JSON.stringify(retries.attempts)}`);
     },
     baseUrl: 'http://localhost:3000',
     waitforTimeout: 10000,

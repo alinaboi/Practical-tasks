@@ -1,9 +1,9 @@
-import RegistrationViaApi from "../../api/registration.api.js";
-import LoginViaApi from "../../api/login.api.js";
-import FeadbackApi from "../../api/feadback.api.js";
+import RegistrationViaApi from "../../../api/registration.api.js";
+import Api from "../../../api/login.api.js";
+import FeadbackApi from "../../../api/feadback.api.js";
 import chai from "chai";
-import UserApi from "../../api/user.api.js";
-import CaptchaApi from "../../api/captcha.api.js"
+import UserApi from "../../../api/user.api.js";
+import CaptchaApi from "../../../api/captcha.api.js"
 
 describe('API testing', async () => {
     it('adding Feadback via API', async () => {
@@ -12,7 +12,7 @@ describe('API testing', async () => {
         const user = await RegistrationViaApi.registerAndReturnUser();
 
         //Login
-        const response = await LoginViaApi.loginAndSetToken(user.email, user.password);
+        const response = await Api.loginAndSetToken(user.email, user.password);
         chai.expect(response.status).to.be.equal(200);
 
         //Getting UserID
@@ -26,12 +26,8 @@ describe('API testing', async () => {
 
         //Sending Feadback
         const feadbackResponse = await FeadbackApi.sendFeadback(userId, captchaObject.captchaId, captchaObject.answer, "some comment", 4);
-        
+
         //Verifying
         chai.expect(feadbackResponse.status).to.be.equal(201);
-
-        
-
-
     });
 });

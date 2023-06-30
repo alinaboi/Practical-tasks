@@ -1,8 +1,8 @@
-import LoginPage from "../../pages/login.page.js"
-import MainPage from "../../pages/main.page.js"
-import AddressCreatePage from "../../pages/address-create.page.js"
-import AddressSavedPage from "../../pages/address-saved.page.js"
-import RegistrationViaApi from "../../api/registration.api.js";
+import LoginPage from "../../../pages/login.page.js"
+import MainPage from "../../../pages/main.page.js"
+import AddressCreatePage from "../../../pages/address-create.page.js"
+import AddressSavedPage from "../../../pages/address-saved.page.js"
+import RegistrationViaApi from "../../../api/registration.api.js";
 import chai from "chai";
 
 describe('Negative Address creation testing ', async () => {
@@ -23,12 +23,12 @@ describe('Negative Address creation testing ', async () => {
         //Search Page ->Address Saved Page
         await MainPage.openAccountMenu();
         await expect(MainPage.loggedInAccountMenu.wdioElement).toBeDisplayed();
-        await MainPage.ordersAndPayment();
+        await MainPage.navigateToOrdersAndPayment();
         await MainPage.navigateToAddress();
 
         //Address Saved Page ->Address Create Page ->adding new address with wrong mobile number input
         await AddressSavedPage.waitForScreenToBeAvailable();
-        await AddressSavedPage.addNewAddress();
+        await AddressSavedPage.clickAddNewAddress();
         await AddressCreatePage.waitForScreenToBeAvailable();
         await AddressCreatePage.fillAddressFields("@#$1.", "@#$1.", "06333330", "@#$1.", "@#$1.", "@#$1.", "@#$1.");
 

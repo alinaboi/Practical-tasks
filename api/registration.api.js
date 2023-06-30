@@ -1,7 +1,7 @@
 import baseApi from "../base/base.api.js";
 import User from "./user.js";
 
-const password = 'password';
+const password = 'password';  //TODO : improve
 
 class RegistrationViaApi {
     constructor() {
@@ -13,6 +13,7 @@ class RegistrationViaApi {
             const email = await this.generateEmail(10);
             const response = await this.register(email, password);
             if (response.status === 201) {
+                console.info(`!! User  ${email} has been successfully created.`)
                 return new User(response.body.data.email, password);
             }
         }
@@ -31,11 +32,11 @@ class RegistrationViaApi {
                 "createdAt": "2021-12-11T10:11:06.058Z",
                 "updatedAt": "2021-12-11T10:11:06.058Z"
             },
-            "securityAnswer": "Funtic"
+            "securityAnswer": "Funtic" //TODO : improve
         });
     }
 
-    async generateEmail(length) {
+    async generateEmail(length) { //TODO : move to helper
         await allure.addStep(`Creating random Email`);
         const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         let result = 'user-';
@@ -45,6 +46,4 @@ class RegistrationViaApi {
         }
         return result + '@gmail.com';
     }
-}
-
-export default new RegistrationViaApi();
+} export default new RegistrationViaApi();

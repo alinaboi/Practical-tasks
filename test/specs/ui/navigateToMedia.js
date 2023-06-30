@@ -1,5 +1,5 @@
-import AboutPage from "../../pages/about.page.js"
-import MainPage from "../../pages/main.page.js"
+import AboutPage from "../../../pages/about.page.js"
+import MainPage from "../../../pages/main.page.js"
 
 describe('Navigation testing', async () => {
     it('test switching to social media pages through About page', async () => {
@@ -27,8 +27,8 @@ describe('Navigation testing', async () => {
                 timeoutMsg: 'expected Facebook Page is opened'
             }
         );
-        
+
         //Verify the page is opened
-        await expect ($('//span[text()="OWASP Juice Shop"]')).toBeDisplayed();
+        await expect($('//span[text()="OWASP Juice Shop"]')).toBeDisplayed();
     });
 });

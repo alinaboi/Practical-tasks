@@ -2,7 +2,7 @@ import superagent from "superagent";
 import loginApi from "../api/login.api.js";
 
 class BaseApi {
-  constructor() {}
+  constructor() { }
 
   async post(url, body) {
     const finalUrl = global.baseUrl + url;
@@ -20,6 +20,7 @@ class BaseApi {
         return error;
       })
   }
+
   async get(url) {
     const finalUrl = global.baseUrl + url;
     return await superagent
@@ -37,5 +38,4 @@ class BaseApi {
       })
   }
 
-}
-export default new BaseApi();
+} export default new BaseApi();
