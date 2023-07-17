@@ -10,49 +10,50 @@ import checkoutApi from "./checkout.api.js";
 import chai from "chai";
 
 class Api {
-    constructor() {
-    }
+  constructor() {}
 
-    async addressApi() {
-        return addressApi;
-    }
+  addressApi() {
+    return addressApi;
+  }
 
-    async cardApi() {
-        return cardApi;
-    }
+  cardApi() {
+    return cardApi;
+  }
 
-    async captchaApi() {
-        return captchaApi;
-    }
+  captchaApi() {
+    return captchaApi;
+  }
 
-    async feadbackApi() {
-        return feadbackApi;
-    }
+  feadbackApi() {
+    return feadbackApi;
+  }
 
-    async loginApi() {
-        return loginApi;
-    }
+  loginApi() {
+    return loginApi;
+  }
 
-    async registrationApi() {
-        return registrationApi;
-    }
+  registrationApi() {
+    return registrationApi;
+  }
 
-    async basketApi() {
-        return basketApi;
-    }
+  basketApi() {
+    return basketApi;
+  }
 
-    async checkoutApi() {
-        return checkoutApi;
-    }
+  checkoutApi() {
+    return checkoutApi;
+  }
 
-    async verifyStatusCode(response, expectedCode = 200) {
-        return chai.expect(response.status).to.be.equal(expectedCode);
-    }
+  verifyStatusCode(response, expectedCode = 200) {
+    return chai.expect(response.status).to.be.equal(expectedCode);
+  }
 
-    async verifyStatusIsSuccess(response) {
-        let status = await JSON.parse(response.text).status;
-        chai.expect(status, "Response status doesn't match expected: success").equals('success');
-    }
+  async verifyStatusIsSuccess(response) {
+    let status = await JSON.parse(response.text).status;
+    chai
+      .expect(status, "Response status doesn't match expected: success")
+      .equals("success");
+  }
 }
 
 export default new Api();
